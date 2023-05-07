@@ -1,0 +1,44 @@
+@keyframes alias {
+  0% {
+    background-image: linear-gradient(to right, black 90%, white);
+    color: white;
+  }
+  12% {
+    background-image: linear-gradient(to right, black 80%, white);
+    color: white;
+  }
+  24% {
+    background-image: linear-gradient(to right, black 70%, white);
+    color: white;
+  }
+  36% {
+    background-image: linear-gradient(to right, black 60%, white);
+    color: white;
+  }
+  48% {
+    background-image: linear-gradient(to right, black 50%, white);
+    color: white;
+  }
+  60% {
+    background-image: linear-gradient(to right, black 40%, white);
+    color: white;
+  }
+  72% {
+    background-image: linear-gradient(to right, black 30%, white);
+    color: white;
+  }
+  84% {
+    background-image: linear-gradient(to right, black 20%, white);
+    color: black;
+  }
+  100% {
+    background-image: linear-gradient(to right, black 10%, white);
+    color: black;
+  }
+}
+
+.alias {
+  animation-name: alias;
+  animation-duration: 3s;
+  animation-iteration-count: 10;
+}
