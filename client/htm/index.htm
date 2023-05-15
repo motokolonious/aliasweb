@@ -15,7 +15,7 @@
       }
       header {
         display: flex;
-        flex-direction: horizontal;
+        flex-direction: row;
         align-items: center;
         background-color: black;
       }
@@ -29,7 +29,7 @@
       article {
         background-color: #0f421d;
       }
-      article h1, article p {
+      article > p, article h1 {
         color: white;
         margin: 0;
         text-align: center;
@@ -97,7 +97,9 @@
       <p>The Lonious Web</p>
     </header>
     <article>
-      <h1>Hi. I'm <span class="alias">Lonious</span>.</h1>
+      <div class="aliascontainer">
+        <h1>Hi. I'm <span class="alias">Lonious.<span class="aliasinfo">This is an alias. You'll need to earn a business badge to see my real name.</span></span></h1>
+      </div>
       <br />
       <p>I'm a programmer who wants to keep his skills up, collaborate with peers, and provide employers with vital information. Please peruse the site at your leisure!</p>
       <p>I have a lot of unfinished projects and interests. Please help! See the list below to find out more.</p>
@@ -110,7 +112,7 @@
         <li>Learning languages</li>
         <li>Basketball</li>
         <li>Daydreaming</li>
-        <li>Adventuring further</li>
+        <li>Music & guitar</li>
       </ul>
       <br />
       <div class="med-division"></div>

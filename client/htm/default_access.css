@@ -38,7 +38,31 @@
 }
 
 .alias {
-  animation-name: alias;
-  animation-duration: 3s;
-  animation-iteration-count: 10;
+  animation-name: alias; /* note: exiting hover on mouse leave will reapply this animation/duration/count to the alias again */
+  animation-duration: 2.1s;
+  animation-iteration-count: 4;
+}
+
+.alias:hover {
+  animation-name: none;
+  animation-duration: 0s;
+  animation-iteration-count: 0;
+}
+
+.aliasinfo {
+  display: none;
+}
+
+.aliascontainer {
+  position: relative; /* so that absolute positioning can be applied to the nested alias info and allow the header to center itself without accounting for alias info content */
+}
+
+.alias:hover .aliasinfo {
+  display: initial;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 56%;
+  width: 150px;
+  font-size: x-small;
 }
