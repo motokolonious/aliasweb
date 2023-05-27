@@ -27,13 +27,42 @@
         margin: 0;
       }
       article {
-        background-color: #0f421d;
+        --theme-g: #0f421d;
+        background-color: var(--theme-g);
       }
       article > p, article h1 {
         color: white;
         margin: 0;
         text-align: center;
         font-family: "Merienda", "Kalam", fantasy;
+      }
+      .header__divisor {
+        width: 2em;
+      }
+      .header__vocationanchor {
+        --vocation-g: #039e1d;
+        --vocation-gb: #2cf59a;
+        color: white;
+        text-decoration: none;
+      }
+      .header__vocationanchor > span:nth-child(1) {
+        color: var(--vocation-g);
+        font-style: oblique 50deg;
+        font-weight: 900;
+      }
+      .header__vocationanchor > span:nth-child(2) {
+        color: var(--vocation-g);
+        text-decoration: underline solid var(--vocation-g);
+      }
+      .header__vocationanchor:hover {
+        color: var(--vocation-gb);
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .header__vocationanchor:hover > span {
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
       }
       article h3 {
         width: 150px;
@@ -95,6 +124,8 @@
     <header>
       <img src="loniousweb.png" alt="loniousweb" />
       <p>The Lonious Web</p>
+      <div class="header__divisor"></div>
+      <a class="header__vocationanchor" href="vocation.htm">><span>V</span><span>ocational<span></a>
     </header>
     <article>
       <div class="aliascontainer">
@@ -111,14 +142,14 @@
         <li>Gaming</li>
         <li>Learning languages</li>
         <li>Basketball</li>
-        <li>Daydreaming</li>
         <li>Music & guitar</li>
+        <li>Daydreams</li>
       </ul>
       <br />
       <div class="med-division"></div>
     </article>
     <footer>
-      <p>&#9888;Please note that to get deeper insights into my interests, hobbies, and ambitions you will need to share some information about yourself with me. Be on the lookout for these interactive opportunities!&#9888;</p>
+      <p>&#9888;Please note that to get deeper insights into my interests, hobbies, or their business infused forms you will need to share some information about yourself with me.&#9888;</p>
       <br />
       <p>&#169;copyright! jk not really.&#169;</p>
     </footer>
