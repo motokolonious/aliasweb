@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  background-color: grey;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+}
+header > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: black;
+  text-decoration: none;
+}
+header img {
+  width: 50px;
+}
+header p {
+  color: white;
+  margin: 0;
+}
+article {
+  --theme-g: #0f421d;
+  background-color: var(--theme-g);
+  color: white;
+}
+footer {
+  background-color: black;
+}
+footer p {
+  margin: 0;
+  color: white;
+}
