@@ -1,0 +1,10 @@
+# Copy these to a web server root configuration file like /etc/apache2/apache2.conf
+
+
+# https://www.php.net/manual/en/install.unix.apache2.php
+# LoadModule php_module modules/libphp.so
+LoadModule php7_module modules/libphp7.so
+
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
