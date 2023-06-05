@@ -1,9 +1,15 @@
+<?php
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="A personal website for alias web." />
-    <title>thealiasweb</title>
+    <title>aliasweb</title>
     <link rel="icon" type="image/png" href="loniousweb.png">
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
@@ -90,18 +96,14 @@
     <header>
       <a>
         <img src="aliasweb.png" alt="" />
-        <p>The <span><?php
-          $aliases = ['Lonious', 'Azerim', 'Azerah', 'Motoko'];
-          $rand_alias_index = array_rand($aliases);
-          echo $aliases[$rand_alias_index];
-          ?></span> Web</p>
+        <p><span><?php include 'get_alias.php';?></span> Web</p>
       </a>
       <div class="header__divisor"></div>
-      <a class="header__vocationanchor" href="vocation.htm">><span>V</span><span>ocational<span></a>
+      <a class="header__vocationanchor" href="vocation.php">><span>V</span><span>ocational<span></a>
     </header>
     <article>
       <div class="aliascontainer">
-        <h1>Hi. I'm <span class="alias">Alias.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
+        <h1>Hi. I'm <span class="alias"><?php include 'get_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
       </div>
       <br />
       <p>I'm a programmer who wants to keep his skills up, collaborate with peers, and provide employers with vital information. Please peruse the site at your leisure!</p>
