@@ -21,7 +21,7 @@
   <header>
     <a href="index.php">
       <img src="aliasweb.png" alt="" />
-      <p><span><?php include 'get_alias.php';?></span> Web</p>
+      <p><span><?php include 'get_file_alias.php';?></span> Web</p>
     </a>
   </header>
   <body>

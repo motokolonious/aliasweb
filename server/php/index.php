@@ -96,14 +96,14 @@
     <header>
       <a>
         <img src="aliasweb.png" alt="" />
-        <p><span><?php include 'get_alias.php';?></span> Web</p>
+        <p><span><?php include 'get_file_alias.php';?></span> Web</p>
       </a>
       <div class="header__divisor"></div>
       <a class="header__vocationanchor" href="vocation.php">><span>V</span><span>ocational<span></a>
     </header>
     <article>
       <div class="aliascontainer">
-        <h1>Hi. I'm <span class="alias"><?php include 'get_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
+        <h1>Hi. I'm <span class="alias"><?php include 'get_file_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
       </div>
       <br />
       <p>I'm a programmer who wants to keep his skills up, collaborate with peers, and provide employers with vital information. Please peruse the site at your leisure!</p>
