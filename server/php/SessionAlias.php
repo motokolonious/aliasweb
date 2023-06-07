@@ -1,7 +1,8 @@
 <?php
   # Designed to be a singleton and encapsulate all active session aliases
+  # I think this doesn't work because the session alias map gets deallocated or deleted at the end of the php script
   class SessionAlias {
-    private static $aliases = ['Lonious', 'Azerim', 'Azerah', 'Motoko', 'Mikasa'];
+    private static $aliases = ['Lonious', 'Azerim', 'Azerah', 'Motoko', 'Mikasa', 'Bronn'];
     private static $session_alias_map = [];
     private static $instance;
     private function __constructor() {}
