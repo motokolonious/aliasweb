@@ -15,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta name="description" content="A personal website for alias web." />
     <title>aliasweb</title>
-    <link rel="icon" type="image/png" href="loniousweb.png">
+    <link rel="icon" type="image/png" href="aliasweb.png">
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
@@ -106,7 +106,6 @@
       <div class="header__divisor"></div>
       <a class="header__vocationanchor" href="vocation.php">><span>V</span><span>ocational<span></a>
     </header>
-    <p><?php echo session_status(); ?></p>
     <article>
       <div class="aliascontainer">
         <h1>Hi. I'm <span class="alias"><?php include 'get_session_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
