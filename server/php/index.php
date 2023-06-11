@@ -104,6 +104,7 @@
       <div class="header__divisor"></div>
       <a class="header__vocationanchor" href="vocation.php">><span>V</span><span>ocational<span></a>
     </header>
+    <p><?php echo session_status(); ?></p>
     <article>
       <div class="aliascontainer">
         <h1>Hi. I'm <span class="alias"><?php include 'get_session_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>

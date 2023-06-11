@@ -18,13 +18,14 @@
       }
     </style>
   </head>
-  <header>
-    <a href="index.php">
-      <img src="aliasweb.png" alt="" />
-      <p><span><?php include 'get_session_alias.php';?></span> Web</p>
-    </a>
-  </header>
   <body>
+    <header>
+      <a href="index.php">
+        <img src="aliasweb.png" alt="" />
+        <p><span><?php include 'get_session_alias.php';?></span> Web</p>
+      </a>
+    </header>
+    <p><?php echo session_status(); ?></p>
     <article>
       <figure>
         <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="400px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
