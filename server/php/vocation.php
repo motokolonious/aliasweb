@@ -45,8 +45,8 @@
     </article>
   </body>
   <footer>
-    <p>&#9888;Please note that to get deeper insights into my interests, hobbies, or their business infused forms you will need to share some information about yourself with me.&#9888;</p>
+    <p>&#9888;&#128274;&#9888;</p>
     <br />
-    <p>&#169;copyright! jk not really.&#169;</p>
+    <p>&#169;copyright! jk not really&#169;</p>
   </footer>
 </html>
