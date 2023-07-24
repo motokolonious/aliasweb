@@ -1,14 +1,4 @@
-<?php
-  if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-    $aliases = ['Lonious', 'Azerim', 'Azerah', 'Motoko', 'Mikasa', 'Bronn'];
-    $rand_alias_index = array_rand($aliases);
-    if (!array_key_exists('alias', $_SESSION) || strlen($_SESSION['alias']) == 0) {
-      $_SESSION['alias'] = $aliases[$rand_alias_index];
-    }
-  }
-?>
-
+<?php include 'set_session_alias.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,46 +46,8 @@
         cursor: pointer;
         text-decoration: none;
       }
-      article h3 {
-        width: 150px;
-        color: black;
-        background-color: white;
-        margin: 0;
-        text-align: center;
-        font-family: cursive;
-      }
-      article > ul {
-        list-style-type: none;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-      @keyframes interestitem {
-        33% {
-          background-image: linear-gradient(to right, white 85%, black);
-        }
-        66% {
-          background-image: linear-gradient(to right, white 90%, black);
-        }
-        99% {
-          background-image: linear-gradient(to right, white 95%, black);
-        }
-      }
-      article > ul > li {
-        width: 400px;
-        background-color: black;
-        color: white;
-        font-family: cursive;
-      }
-      article > ul > li:hover {
-        background-color: white;
-        color: black;
-        animation-name: interestitem;
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
-        cursor: pointer;
-      }
     </style>
+    <link rel="stylesheet" type="text/css" href="top_interests.css">
   </head>
   <body>
     <header>
@@ -116,7 +68,7 @@
       <br />
       <h3>Top Interests</h3>
       <ul>
-        <li>Skateboarding</li>
+        <li><a href="skateboarding.php">Skateboarding</a></li>
         <li>Free software</li>
         <li>Gaming</li>
         <li>Learning languages</li>

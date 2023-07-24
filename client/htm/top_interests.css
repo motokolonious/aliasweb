@@ -1,0 +1,62 @@
+/* Top interests header */
+article h3 {
+  width: 150px;
+  color: black;
+  background-color: white;
+  margin: 0;
+  text-align: center;
+  font-family: cursive;
+}
+
+/* Interest item (ii) styles */
+article > ul {
+  --ii-width: 400px;
+  --ii-init-txt-clr: white;
+  --ii-hvr-txt-clr: black;
+  --ii-init-bkg-clr: black;
+  --ii-hvr-bkg-clr: white;
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+@keyframes interestitem {
+  33% {
+    background-image: linear-gradient(to right, white 85%, black);
+  }
+  66% {
+    background-image: linear-gradient(to right, white 90%, black);
+  }
+  99% {
+    background-image: linear-gradient(to right, white 95%, black);
+  }
+}
+article > ul > li {
+  width: var(--ii-width, 400px);
+  background-color: var(--ii-init-bkg-clr, black);
+  color: var(--ii-txt-clr, white);
+  font-family: cursive;
+}
+article > ul > li > a {
+  display: inline-block;
+  width: var(--ii-width, 400px);
+  text-decoration: none;
+  color: var(--ii-init-txt-clr, white);
+  margin: 0;
+}
+article > ul > li > a:hover {
+  background-color: var(--ii-hvr-bkg-clr, white);
+  color: var(--ii-hvr-txt-clr, black);
+  animation-name: interestitem;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+article > ul > li:hover {
+  background-color: var(--ii-hvr-bkg-clr, white);
+  color: var(--ii-hvr-txt-clr, black);
+  animation-name: interestitem;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}

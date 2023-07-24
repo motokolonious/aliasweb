@@ -1,3 +1,4 @@
+<?php include 'set_session_alias.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,7 +18,7 @@
     <header>
       <a href="index.htm">
         <img src="aliasweb.png" alt="" />
-        <p>Alias Web</p>
+        <p><span><?php include 'get_session_alias.php';?></span> Web</p>
       </a>
       <div class="header__divisor"></div>
     </header>
