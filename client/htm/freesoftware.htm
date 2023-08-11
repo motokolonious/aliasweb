@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="A personal website for alias web." />
+    <title>aliasweb</title>
+    <link rel="icon" type="image/png" href="aliasweb.png">
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
+    <link rel="stylesheet" type="text/css" href="divisors.css">
+    <style type="text/css">
+      h1, h4 {
+        margin: 0;
+        padding: 10px 0;
+        text-align: center;
+      }
+      svg {
+        border: medium inset black;
+      }
+      #powersvg {
+        background-color: purple;
+      }
+      #strengthsvg {
+        background-color: pink;
+      }
+      #tranquilsvg {
+        background-color: green;
+      }
+      .freeitem {
+        display: none;
+      }
+      .power__div {
+        display: flex;
+        align-items: center;
+        background-color: yellow;
+      }
+      .freeitem {
+        color: black;
+        flex-shrink: 10;
+        font-family: "Merienda", "Kalam", fantasy;
+        font-size: large;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .strength__div {
+        display: flex;
+        align-items: center;
+        background-color: maroon;
+        color: blue;
+      }
+      .tranquil__div {
+        display: flex;
+        align-items: center;
+        background-color: grey;
+        color: green;
+      }
+    </style>
+    <script type="text/javascript">
+      function freeItemClick(paragraphId) {
+        const freeItem = document.getElementById(paragraphId);
+        if (freeItem && freeItem.style && 'display' in freeItem.style) {
+          freeItem.style.display = 'initial';
+        } else {
+          console.warn('There was a problem setting the display property of the free item.');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="index.htm">
+        <img src="aliasweb.png" alt="" />
+        <p>Alias Web</p>
+      </a>
+    </header>
+    <article>
+      <div>
+        <h1>Free software! Yay! Wait a second.. 'free' has more than one meaning?</h1>
+        <h4>Yes, there are different definitions of free and many of them do apply to software use and development. Click on the following images to learn more about my opinion on the subject.</h4>
+        <div class="power__div">
+          <svg id="powersvg" width="100px" height="100px" onclick="freeItemClick('power_paragraph')">
+            <circle cx="50" cy="50" r="35" fill="yellow"></circle>
+            <text x="28" y="55" fill="red">Power!</text>
+          </svg>
+          <p id="power_paragraph" class="freeitem">Software should be built to give people power, equalize otherwise disparate structures, and provide each user the tools to customize the program. I believe the <a href="https://www.fsf.org/">Free Software Foundation</a> generally agrees on these points but <em>please do read more</em> at their website.</p>
+        </div>
+        <div class="strength__div">
+          <svg id="strengthsvg" width="100px" height="100px" onclick="freeItemClick('strength_paragraph')">
+            <circle cx="50" cy="50" r="35" fill="blue"></circle>
+            <text x="20" y="55" fill="pink">Strength!</text>
+          </svg>
+          <p id="strength_paragraph" class="freeitem">I believe the inherent strength of software is how fast and easy it is to <em>copy and run it elsewhere</em>. Stringent distribution licenses that disallow copying, decompilation, or modification make software less useful and less inclusive.</p>
+        </div>
+        <div class="tranquil__div">
+          <svg id="tranquilsvg" width="100px" height="100px" onclick="freeItemClick('tranquil_paragraph')">
+            <circle cx="50" cy="50" r="35" fill="magenta"></circle>
+            <text x="12" y="55" fill="cyan">Tranquility</text>
+          </svg>
+          <p id="tranquil_paragraph" class="freeitem">Running new software on your system should not cause excessive anxiety. If you signed a contract disallowing you from viewing the details of a program, how can you be sure that it won't harm your computer?</p>
+        </div>
+      </div>
+      <div class="med-division"></div>
+    </article>
+    <footer>
+      <p>&#9888;More content is available to verified users&#9888;</p>
+      <br />
+      <p>&#169;copyright! jk not really&#169;</p>
+    </footer>
+  </body>
+</html>
