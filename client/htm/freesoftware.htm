@@ -15,25 +15,26 @@
         padding: 10px 0;
         text-align: center;
       }
+      input {
+        margin-bottom: 10px;
+      }
       svg {
         border: medium inset black;
       }
       #powersvg {
-        background-color: purple;
+        background-color: mediumvioletred;
       }
       #strengthsvg {
         background-color: pink;
       }
       #tranquilsvg {
-        background-color: green;
+        background-color: yellowgreen;
+      }
+      #stylesvg {
+        background-color: teal;
       }
       .freeitem {
         display: none;
-      }
-      .power__div {
-        display: flex;
-        align-items: center;
-        background-color: yellow;
       }
       .freeitem {
         color: black;
@@ -43,17 +44,25 @@
         padding-left: 10px;
         padding-right: 10px;
       }
+      .power__div {
+        display: flex;
+        align-items: center;
+        background-color: khaki;
+      }
       .strength__div {
         display: flex;
         align-items: center;
-        background-color: maroon;
-        color: blue;
+        background-color: crimson;
       }
       .tranquil__div {
         display: flex;
         align-items: center;
-        background-color: grey;
-        color: green;
+        background-color: lightsteelblue;
+      }
+      .style__div {
+        display: flex;
+        align-items: center;
+        background-color: darkslateblue;
       }
     </style>
     <script type="text/javascript">
@@ -81,26 +90,36 @@
         <div class="power__div">
           <svg id="powersvg" width="100px" height="100px" onclick="freeItemClick('power_paragraph')">
             <circle cx="50" cy="50" r="35" fill="yellow"></circle>
-            <text x="28" y="55" fill="red">Power!</text>
+            <text x="30" y="55" fill="red">Power</text>
           </svg>
           <p id="power_paragraph" class="freeitem">Software should be built to give people power, equalize otherwise disparate structures, and provide each user the tools to customize the program. I believe the <a href="https://www.fsf.org/">Free Software Foundation</a> generally agrees on these points but <em>please do read more</em> at their website.</p>
         </div>
         <div class="strength__div">
           <svg id="strengthsvg" width="100px" height="100px" onclick="freeItemClick('strength_paragraph')">
-            <circle cx="50" cy="50" r="35" fill="blue"></circle>
-            <text x="20" y="55" fill="pink">Strength!</text>
+            <circle cx="50" cy="50" r="35" fill="mediumblue"></circle>
+            <text x="22" y="55" fill="pink">Strength</text>
           </svg>
           <p id="strength_paragraph" class="freeitem">I believe the inherent strength of software is how fast and easy it is to <em>copy and run it elsewhere</em>. Stringent distribution licenses that disallow copying, decompilation, or modification make software less useful and less inclusive.</p>
         </div>
         <div class="tranquil__div">
           <svg id="tranquilsvg" width="100px" height="100px" onclick="freeItemClick('tranquil_paragraph')">
-            <circle cx="50" cy="50" r="35" fill="magenta"></circle>
+            <circle cx="50" cy="50" r="35" fill="mediumorchid"></circle>
             <text x="12" y="55" fill="cyan">Tranquility</text>
           </svg>
           <p id="tranquil_paragraph" class="freeitem">Running new software on your system should not cause excessive anxiety. If you signed a contract disallowing you from viewing the details of a program, how can you be sure that it won't harm your computer?</p>
         </div>
+        <div class="style__div">
+          <svg id="stylesvg" width="100px" height="100px" onclick="freeItemClick('style_paragraph')">
+            <circle cx="50" cy="50" r="35" fill="slategrey"></circle>
+            <text x="33" y="55" fill="violet">Style</text>
+          </svg>
+          <p id="style_paragraph" class="freeitem">Software developers have their own style. There really aren't many worse office tortures than arguing and refactoring over insignificant naming, whitespace, or capitalization conventions. Replacing implementation for equal but reviewer preferred library calls (or similar) wastes time. Allow your peers to express themselves through code where they can.</p>
+        </div>
       </div>
       <div class="med-division"></div>
+      <h3>What are you thoughts on free software?</h3>
+      <input type="text" placeholder="Not implemented yet..."></input>
+      <div class="sml-division"></div>
     </article>
     <footer>
       <p>&#9888;More content is available to verified users&#9888;</p>

@@ -1,6 +1,10 @@
+.lrg-division {
+  background-color: black;
+  height: 400px;
+}
 .med-division {
   background-color: black;
-  height: 200px;
+  height: 150px;
 }
 .sml-division {
   background-color: black;
