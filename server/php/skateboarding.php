@@ -16,7 +16,7 @@
   </head>
   <body>
     <header>
-      <a href="index.htm">
+      <a href="index.php">
         <img src="aliasweb.png" alt="" />
         <p><span><?php include 'get_session_alias.php';?></span> Web</p>
       </a>
