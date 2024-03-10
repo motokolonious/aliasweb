@@ -17,26 +17,28 @@
         text-align: center;
         font-family: "Merienda", "Kalam", fantasy;
       }
+      header {
+        --header-g: #039e1d;
+        --header-gb: #2cf59a;
+      }
       .header__divisor {
         width: 2em;
       }
       .header__vocationanchor {
-        --vocation-g: #039e1d;
-        --vocation-gb: #2cf59a;
         color: white;
         text-decoration: none;
       }
       .header__vocationanchor > span:nth-child(1) {
-        color: var(--vocation-g);
+        color: var(--header-g);
         font-style: oblique 30deg;
         font-weight: 900;
       }
       .header__vocationanchor > span:nth-child(2) {
-        color: var(--vocation-g);
-        text-decoration: underline solid var(--vocation-g);
+        color: var(--header-g);
+        text-decoration: underline solid var(--header-g);
       }
       .header__vocationanchor:hover {
-        color: var(--vocation-gb);
+        color: var(--header-gb);
         cursor: pointer;
         text-decoration: none;
       }
@@ -44,6 +46,18 @@
         color: white;
         cursor: pointer;
         text-decoration: none;
+      }
+      .header__srcodeanchor {
+        margin-left: 80%;
+        text-decoration-line: underline overline;
+        text-decoration-color: white;
+        color: var(--header-g);
+      }
+      .header__srcodeanchor:hover {
+        margin-left: 80%;
+        text-decoration-line: underline overline;
+        text-decoration-color: var(--header-gb);
+        color: white;
       }
     </style>
     <link rel="stylesheet" type="text/css" href="top_interests.css">
@@ -56,6 +70,7 @@
       </a>
       <div class="header__divisor"></div>
       <a class="header__vocationanchor" href="vocation.htm">><span>V</span><span>ocational<span></a>
+      <a class="header__srcodeanchor" href="https://github.com/gordlonious/aliasweb">Site Source Code</a>
     </header>
     <article>
       <div class="aliascontainer">
@@ -67,11 +82,10 @@
       <br />
       <h3>Top Interests</h3>
       <ul>
-        <li><a href="skateboarding.htm">Skateboarding</a></li>
-        <li><a href="freesoftware.htm">Free software</a></li>
+        <li><a href="skateboarding.htm">Skate & Sport</a></li>
+        <li><a href="freesoftware.htm">Software</a></li>
         <li>Gaming</li>
-        <li>Learning languages</li>
-        <li>Basketball</li>
+        <li>Natural languages</li>
         <li>Music & guitar</li>
         <li>Daydreams</li>
       </ul>
