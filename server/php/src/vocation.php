@@ -3,7 +3,7 @@
     session_start();
   }
 ?>
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -50,3 +50,4 @@
     <p>&#169;copyright! jk not really&#169;</p>
   </footer>
 </html>
+
