@@ -16,6 +16,49 @@
         margin: 0;
         text-align: center;
       }
+      body article:nth-of-type(2) {
+        width: 40%;
+      }
+      article > header {
+        background-color: darkslategray;
+        color: magenta;
+        text-align: center;
+        padding: 10px 0;
+      }
+      article > header > h3 {
+        margin: 0;
+      }
+      .getaccess__content > div {
+        background-color: darkorchid;
+        border: thick double forestgreen;
+        padding: 4px 0 4px 10%;
+        margin: 0 auto;
+      }
+      .getaccess__content > div > div:first-child {
+        display: inline-block;
+        width: 50%;
+      }
+      .getaccess__content > div > div + div {
+        display: inline-block;
+        width: 30%;
+      }
+      .getaccess__content input {
+        background-color: lightsteelblue;
+        color: purple;
+        border: medium outset fuchsia;
+        border-radius: 10px;
+        width: 100%;
+      }
+      .getaccess__content input:hover {
+        background-color: lightblue;
+        border: medium outset purple;
+        color: black;
+      }
+      .getaccess__content input:active {
+        background-color: lightblue;
+        box-shadow: inset 3px 3px 2px 2px green;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -42,6 +85,20 @@
         <figcaption>You don't have a business token!</figcaption>
       </figure>
       <div class="med-division"></div>
+    </article>
+    <article>
+      <header class="getaccess__header"><h3>Get Access!</h3></header>
+      <div class="getaccess__content">
+        <div>
+          <div><label>Single use session token:</label></div><div><input type="button" value="Go" /></div>
+        </div>
+        <div>
+          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" /></div>
+        </div>
+        <div>
+          <div><label>Digital signature:</label></div><div><input type="button" value="Go" /></div>
+        </div>
+      </div>
     </article>
   </body>
   <footer>
