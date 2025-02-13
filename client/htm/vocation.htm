@@ -55,6 +55,18 @@
         color: black;
       }
     </style>
+    <script type="text/javascript">
+      function disablePageInteractiveContent() {
+        let inputs = document.querySelectorAll("input");
+        for (let i = 0; i < inputs.length; i++) {
+          inputs[i].removeAttribute('onclick');
+        }
+      }
+      function openModal() {
+        disablePageInteractiveContent();
+        //Make modal article front and center (not appended like it is now)
+      }
+    </script>
   </head>
   <header>
     <a href="index.htm">
@@ -85,15 +97,21 @@
       <header class="getaccess__header"><h3>Get Access!</h3></header>
       <div class="getaccess__content">
         <div>
-          <div><label>Single use session token:</label></div><div><input type="button" value="Go" /></div>
+          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="openModal()"/></div><!--purged password-->
         </div>
         <div>
-          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" /></div>
+          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" /></div><!--RFC6476-->
         </div>
         <div>
           <div><label>Digital signature:</label></div><div><input type="button" value="Go" /></div>
         </div>
       </div>
+    </article>
+    <article>
+      <header class="modal__header">Session Token</header>
+      <p>This is mostly the same thing as a password. However, depending on how it was generated and distributed it might look long and incoherent. These tokens are deleted after your browsing session ends and the token data source is regularly purged just to be safe. You will not be able to use the same token again afterward.</p>
+      <input type="textbox" placeholder="..."/>
+      <input type="button" value="Authenticate"/>
     </article>
   </body>
   <footer>
