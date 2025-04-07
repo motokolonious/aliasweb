@@ -60,6 +60,16 @@
         color: black;
       }
     </style>
+    <script src="GetAccessModal.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      const sessionModalHeaderTxt = "Session Token";
+      const sessionParagraphTxt = "This is mostly the same thing as a password. However, depending on how it was generated and distributed it might look long and incoherent. These tokens are deleted after your browsing session ends and the token data source is regularly purged just to be safe. You will not be able to use the same token again afterward.";
+      const macHeaderTxt = "Message Authentication Code";
+      const macParagraphTxt = "An encrypted and authenticated value which verifies message integrity. The message can be any passphrase or paragraph. Valid input duration periods are negotiated when the code is created.";
+      const identityHeaderTxt = "Divine Identity";
+      const identityParagraphTxt = "A fully verified identity implemented using digital signatures and more. It is unlikely you have one of these.";
+      const accessEndpoint = "https://aliasweb.me/api/get_token";
+    </script>
   </head>
   <body>
     <header>
@@ -90,16 +100,29 @@
       <header class="getaccess__header"><h3>Get Access!</h3></header>
       <div class="getaccess__content">
         <div>
-          <div><label>Single use session token:</label></div><div><input type="button" value="Go" /></div>
+          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="openModal(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
         </div>
         <div>
-          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" /></div>
+          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="openModal(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
         </div>
         <div>
-          <div><label>Digital signature:</label></div><div><input type="button" value="Go" /></div>
+          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="openModal(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
         </div>
       </div>
     </article>
+    <script type="text/javascript">
+      function disablePageInteractiveContent() {
+        let inputs = document.querySelectorAll("input");
+        console.log(inputs);
+      }
+      function openModal(disableInputs) {
+        //simply append for now
+        if (disableInptus) disablePageInteractiveContent();
+        const accessModalHtml = getAccessModal(headerText, paragraphText, endpoint);
+        if (document.body === null) throw new Error("The document body was null!");
+        document.body.insertAdjacentHTML('beforeend', accessModalHtml);
+      }
+    </script>
   </body>
   <footer>
     <p>&#9888;&#128274;&#9888;</p>
@@ -107,4 +130,3 @@
     <p>&#169;copyright! jk not really&#169;</p>
   </footer>
 </html>
-
