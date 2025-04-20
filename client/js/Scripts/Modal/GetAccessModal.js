@@ -1,28 +1,58 @@
-function getAccessModal(headerText, paragraphText, submissionEndpoint) {
-  if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
-  if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
-  if (typeof submissionEndpoint !== "string") throw new Error("GetAccessModal submissionEndpoint must be a string.");
-  if (!submissionEndpoint.startsWith("https://aliasweb.me/api/")) throw new Error("GetAccessModal submissionEndpoint must start with {API}.");
+function getAccessModalObject() {
+  const accessModalClassName = "getaccessmodal";
+  const authenticateAccessModal = function authenticateAccessModal() { console.log("AUTHENTICATE"); };
+  return {
+    //Question(s): can good DOM mutations make it so that there is only ever one modal in the document? Why would you ever need more than one?
 
-  //omg use caching function to count the instances and append the instance id?
-  //TODO: gaurantee that even when clients use this component multiple times in the same document that the input IDs are unique.
-  const AuthInputId = "getaccessmodal__input--m5caa68ips";
+    accessModalClassName: accessModalClassName,
 
-  //this fn would then need to take an instanceId param?
-  function authenticate() {
-    const input = document.getElementById(AuthInputId);
-    if (input?.value === null || input?.value === undefined) {
-      throw new Error("Authentication failed! The input was not found.");
+    getModalElement: function getAccessModalElement(headerText, paragraphText, submissionEndpoint) {
+      if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
+      if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
+      if (typeof submissionEndpoint !== "string") throw new Error("GetAccessModal submissionEndpoint must be a string.");
+      if (!submissionEndpoint.startsWith("https://aliasweb.me/api/")) throw new Error("GetAccessModal submissionEndpoint must start with {API}.");
+
+      const header = document.createElement("header");
+      header.classList.add(accessModalClassName);
+      header.innerHTML = headerText;
+
+      const paragraph = document.createElement("p");
+      paragraph.classList.add(accessModalClassName);
+      paragraph.innerHTML = paragraphText;
+
+      const textInput = document.createElement("input");
+      textInput.classList.add(accessModalClassName);
+
+      const buttonInput = document.createElement("input");
+      buttonInput.classList.add(accessModalClassName);
+      buttonInput.setAttribute("type", "button");
+      buttonInput.setAttribute("value", "Authenticate");
+      buttonInput.addEventListener("click", authenticateAccessModal);
+
+      const article = document.createElement("article");
+      article.classList.add(accessModalClassName);
+      article.appendChild(header);
+      article.appendChild(paragraph);
+      article.appendChild(textInput);
+      article.appendChild(buttonInput);
+
+      return article;
+    },
+
+    getModalString: function getAccessModalString(headerText, paragraphText, submissionEndpoint) {
+      if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
+      if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
+      if (typeof submissionEndpoint !== "string") throw new Error("GetAccessModal submissionEndpoint must be a string.");
+      if (!submissionEndpoint.startsWith("https://aliasweb.me/api/")) throw new Error("GetAccessModal submissionEndpoint must start with {API}.");
+
+      return `
+        <article>
+          <header class="getaccessmodal">${headerText}</header>
+          <p class="getaccessmodal">${paragraphText}</p>
+          <input class="getaccessmodal" type="textbox" placeholder="..."/>
+          <input class="getaccessmodal" type="button" value="Authenticate" onclick="${function ocauthenticate() { authenticateAccessModal(); }}" />
+        </article>
+    `;
     }
-    console.log('FAKE AUTHENTICATE SUCCESS!');
-  }
-
-  return `
-<article>
-  <header class="getaccessmodal__header">${headerText}</header>
-  <p class="getaccessmodal__paragraph">${paragraphText}</p>
-  <input id="${AuthInputId}" class="getaccessmodal__input" type="textbox" placeholder="..."/>
-  <input class="getaccessmodal__input" type="button" value="Authenticate" onclick="${function ocauthenticate() { authenticate(); }}" />
-</article>
-`;
+  };
 }

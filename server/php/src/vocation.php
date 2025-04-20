@@ -115,12 +115,10 @@
         let inputs = document.querySelectorAll("input");
         console.log(inputs);
       }
-      function openModal(disableInputs) {
-        //simply append for now
-        if (disableInptus) disablePageInteractiveContent();
-        const accessModalHtml = getAccessModal(headerText, paragraphText, endpoint);
-        if (document.body === null) throw new Error("The document body was null!");
-        document.body.insertAdjacentHTML('beforeend', accessModalHtml);
+      function openModal(headerText, paragraphText, endpoint, disableInputs) {
+        if (disableInputs) disablePageInteractiveContent();
+        const accessModalObject = getAccessModalObject();
+        document.body.insertAdjacentElement('beforeend', accessModalObject.getModalElement(headerText, paragraphText, endpoint));
       }
     </script>
   </body>

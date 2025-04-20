@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -125,9 +126,9 @@
       function openModal(headerText, paragraphText, endpoint, disableInputs) {
         //simply append for now
         if (disableInputs) disablePageInteractiveContent();
-        const accessModalHtml = getAccessModal(headerText, paragraphText, endpoint);
-        if (document.body === null) throw new Error("The document body was null!");
-        document.body.insertAdjacentHTML('beforeend', accessModalHtml);
+        const accessModalObject = getAccessModalObject();
+        //document.body.insertAdjacentHTML('beforeend', accessModalObject.getModalString(headerText, paragraphText, endpoint));
+        document.body.insertAdjacentElement('beforeend', accessModalObject.getModalElement(headerText, paragraphText, endpoint));
       }
     </script>
   </body>
