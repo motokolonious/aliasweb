@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="aliasweb.png">
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
     <link rel="stylesheet" type="text/css" href="divisors.css">
+    <link rel="stylesheet" type="text/css" href="accessmodal.css"><!--Should this stylesheet be loaded dynamically when the modal is added to the document?-->
     <style type="text/css">
       article figure {
         margin: 0;
@@ -56,18 +57,6 @@
         color: black;
       }
     </style>
-    <script type="text/javascript">
-      function disablePageInteractiveContent() {
-        let inputs = document.querySelectorAll("input");
-        for (let i = 0; i < inputs.length; i++) {
-          inputs[i].removeAttribute('onclick');
-        }
-      }
-      function openModal() {
-        disablePageInteractiveContent();
-        //Make modal article front and center (not appended like it is now)
-      }
-    </script>
     <script src="GetAccessModal.js" type="text/javascript"></script>
     <script type="text/javascript">
       const sessionModalHeaderTxt = "Session Token";
