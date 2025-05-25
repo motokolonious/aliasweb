@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="aliasweb.png">
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
     <link rel="stylesheet" type="text/css" href="divisors.css">
-    <link rel="stylesheet" type="text/css" href="accessmodal.css"><!--Should this stylesheet be loaded dynamically when the modal is added to the document?-->
+    <!--<link rel="stylesheet" type="text/css" href="getaccess.css">-->
     <style type="text/css">
       article figure {
         margin: 0;
@@ -57,7 +57,7 @@
         color: black;
       }
     </style>
-    <script src="GetAccessModal.js" type="text/javascript"></script>
+    <script src="GetAccess.js" type="text/javascript"></script>
     <script type="text/javascript">
       const sessionModalHeaderTxt = "Session Token";
       const sessionParagraphTxt = "This is mostly the same thing as a password. However, depending on how it was generated and distributed it might look long and incoherent. These tokens are deleted after your browsing session ends and the token data source is regularly purged just to be safe. You will not be able to use the same token again afterward.";
@@ -75,7 +75,7 @@
     </a>
   </header>
   <body>
-    <article>
+    <article id="lockarticle--1999">
       <figure>
         <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="400px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
           <g>
@@ -97,27 +97,25 @@
       <header class="getaccess__header"><h3>Get Access!</h3></header>
       <div class="getaccess__content">
         <div>
-          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="openModal(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
+          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="setDomAccessElement(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
         </div>
         <div>
-          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="openModal(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
+          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="setDomAccessElement(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
         </div>
         <div>
-          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="openModal(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
+          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="setDomAccessElement(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
         </div>
       </div>
     </article>
     <script type="text/javascript">
-      function disablePageInteractiveContent() {
-        let inputs = document.querySelectorAll("input");
-        console.log(inputs);
-      }
-      function openModal(headerText, paragraphText, endpoint, disableInputs) {
-        //simply append for now
-        if (disableInputs) disablePageInteractiveContent();
-        const accessModalObject = getAccessModalObject();
-        //document.body.insertAdjacentHTML('beforeend', accessModalObject.getModalString(headerText, paragraphText, endpoint));
-        document.body.insertAdjacentElement('beforeend', accessModalObject.getModalElement(headerText, paragraphText, endpoint));
+      function setDomAccessElement(headerText, paragraphText, endpoint) {
+        const accessObject = accessObjectFn();
+        //Previously the article was appended like this:
+        //document.body.insertAdjacentElement('beforeend', accessObject.getModalElement(headerText, paragraphText, endpoint));
+        //But now we're going to replace the lock svg with the access article
+        const lockArticle = document.getElementById("lockarticle--1999");
+        if (lockArticle) lockArticle.remove();
+        document.body.prepend(accessObject.getArticle(headerText, paragraphText, endpoint));
       }
     </script>
   </body>

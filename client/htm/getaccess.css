@@ -1,13 +1,6 @@
-@media screen and (min-width: 900px) and (max-width: 2200px) {
-  .accessmodal {
-    --modal-width: 10vw;
-    --modal-index: 10;
-    position: absolute;
-    top: 10vh;
-    left: 10vw;
-    z-index: var(--modal-index, 1);
-    width: 20vw;
-  }
+.getaccess__article {
+  --modal-width: 10vw;
+  --modal-index: 10;
 }
 
 /*
