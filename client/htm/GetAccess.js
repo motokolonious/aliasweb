@@ -1,6 +1,15 @@
 function accessObjectFn() {
   const articleClassName = "getaccess__article";
   const authenticateAccessModal = function authenticateAccessModal() { console.log("AUTHENTICATE"); };
+  function getEightId() {
+    const rand = Math.random().toString().slice(2);
+    if (rand.length < 8) return rand;
+    const eight = rand.slice(0, 8);
+    const firstFour = eight.slice(0, 4);
+    const lastFour = eight.slice(4, 8);
+    const lastFourChars = Array.from(lastFour).map(el => String.fromCharCode((parseInt(el) + 65))).reduce((accumulator, current) => accumulator + current);
+    return firstFour + lastFourChars;
+  }
   return {
     //Question(s): can good DOM mutations make it so that there is only ever one modal in the document? Why would you ever need more than one?
 
@@ -25,8 +34,10 @@ function accessObjectFn() {
       buttonInput.setAttribute("value", "Authenticate");
       buttonInput.addEventListener("click", authenticateAccessModal);
 
+      const articleId = articleClassName + "--" + getEightId();
       const article = document.createElement("article");
       article.classList.add(articleClassName);
+      article.setAttribute("id", articleId);
       article.appendChild(header);
       article.appendChild(paragraph);
       article.appendChild(buttonInput);
