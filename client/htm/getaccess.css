@@ -13,9 +13,9 @@
   max-height: 200px;
 }
 .getaccess__header {
-  background-color: var(--theme-g-bgc);
-  color: var(--theme-g-c);
-  border: solid medium var(--theme-g-brdr); 
+  background-color: var(--theme);
+  color: var(--theme-c2);
+  border: solid medium var(--theme-c1);
   text-align: center;
   padding: 10px 0;
 }
@@ -32,8 +32,8 @@
   background-color: black;
 }
 .getaccess__content > div {
-  background-color: var(--theme-g-bgc);
-  border: thick double var(--theme-g-brdr);
+  background-color: var(--theme-bgc2);
+  border: thick double var(--theme);
   padding: 4px 0 4px 10%;
   margin: 0 auto;
 }
@@ -46,21 +46,21 @@
   width: 30%;
 }
 .getaccess__content input {
-  background-color: var(--theme-g-bgc);
-  color: var(--theme-g-c);
-  border: medium outset var(--theme-g);
+  background-color: var(--theme-bgc);
+  color: var(--theme-c);
+  border: medium outset var(--theme);
   border-radius: 10px;
   width: 100%;
 }
 .getaccess__content input:hover {
-  background-color: var(--theme-g-c);
-  border: medium outset var(--theme-g-brdr);
+  background-color: var(--theme-c);
+  border: medium outset var(--theme-brdr);
   color: black;
 }
 .getaccess__content input:active {
-  background-color: var(--theme-g-c);
-  box-shadow: inset 3px 3px 2px 2px var(--theme-g-fg);
-  color: black;
+  background-color: var(--theme-c2);
+  box-shadow: inset 3px 3px 2px 2px var(--theme-bgc2);
+  color: var(--theme);
 }
 /*
 @media screen and (min-width: 1800px) and (max-width: 2200px) {

@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  background-color: var(--theme-bgc);
+  background-color: var(--theme-bgc1);
 }
 body > header {
   display: flex;
   flex-direction: row;
-  background-color: black;
+  background-color: var(--theme-bgc);
 }
 header > a {
   display: flex;
@@ -18,17 +18,17 @@ header img {
   width: 50px;
 }
 header p {
-  color: var(--theme-g-c);
+  color: var(--theme-c);
   margin: 0;
 }
 article {
-  background-color: var(--theme-g);
-  color: var(--theme-g-c);
+  background-color: var(--theme-bgc1);
+  color: var(--theme-c);
 }
 footer {
-  background-color: black;
+  background-color: var(--theme-bgc);
 }
 footer p {
   margin: 0;
-  color: var(--theme-g-c);
+  color: var(--theme-c);
 }

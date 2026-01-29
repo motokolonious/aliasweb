@@ -1,22 +1,32 @@
 :root {
-  --theme-bgc: black;/*Default theme*/
-  --theme: darkslategrey;
-  --theme-c: snow;
+  /*The default dark-earth theme.*/
+  --theme: #0A0908;/*darkest (black)*/
+  --theme-bgc: #0A0908;/*black background color*/
+  --theme-bgc1: #22333B;/*next darkest (dark with some blue and/or grey)*/
+  --theme-bgc2: #5E503F;/*next darkest (with some brown and/or grey)*/
+  --theme-c: #EAE0D5;/*the lightest (an off-white)*/
+  --theme-c1: #C6AC8F;/*the next lightest, (light-brown)*/
+  --theme-c2: #C1C43B;/*earthy green*/
+  --theme-brdr: #C6AC8F;/*border color*/
 
-  --theme-d-bgc: black;
-  --theme-d: darkslategrey;/*Theme dark --the default*/
-  --theme-d-c: snow;
+  /*The moon theme.*/
+  --theme-m: #30343F;/*near black*/
+  --theme-m-bgc: #30343F;
+  --theme-m-bgc1: #1E2749;/*dark blue*/
+  --theme-m-bgc2: #273469;/*less dark blue*/
+  --theme-m-c: #FAFAFF;/*moon white*/
+  --theme-m-c1: #E4D9FF;/*very light purple*/
 
-  --theme-g-bgc: teal;
-  --theme-g: #1f8f3d;/*Theme green*/
-  --theme-g-c: azure;
-  --theme-g-fg: forestgreen;
-  --theme-g-brdr: #06180b;
-
-  --theme-dg: #092e0d; /*Theme dark green*/
-  --theme-r: #8f0404;/*Theme red*/
+  /*The greens theme.*/
+  --theme-g: #132A13;/*very dark green*/
+  --theme-g-bgc: #132A13;
+  --theme-g-bgc1: #31572C;
+  --theme-g-bgc2: #4f772D;
+  --theme-g-c: #ECF39E;/*almost yellow*/
+  --theme-g-c1: #90A955;
+  /*Might look good reversed? Light background with dark text.*/
 }
 
 body {
-  --theme-grd1: linear-gradient(to top right, var(--theme-bgc) 40%, var(--theme), var(--theme-c));
+  --theme-grd: linear-gradient(to top right, var(--theme-bgc) 40%, var(--theme), var(--theme-c));
 }
