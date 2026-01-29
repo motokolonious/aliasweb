@@ -1,0 +1,22 @@
+:root {
+  --theme-bgc: black;/*Default theme*/
+  --theme: darkslategrey;
+  --theme-c: snow;
+
+  --theme-d-bgc: black;
+  --theme-d: darkslategrey;/*Theme dark --the default*/
+  --theme-d-c: snow;
+
+  --theme-g-bgc: teal;
+  --theme-g: #1f8f3d;/*Theme green*/
+  --theme-g-c: azure;
+  --theme-g-fg: forestgreen;
+  --theme-g-brdr: #06180b;
+
+  --theme-dg: #092e0d; /*Theme dark green*/
+  --theme-r: #8f0404;/*Theme red*/
+}
+
+body {
+  --theme-grd1: linear-gradient(to top right, var(--theme-bgc) 40%, var(--theme), var(--theme-c));
+}

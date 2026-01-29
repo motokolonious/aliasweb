@@ -1,6 +1,39 @@
+.getaccess__article {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.getaccess__article--active {
+  background-color: unset;
+  opacity: 1;
+  width: 40%;
+  position: fixed;
+  inset: 20% 0 0 30%;/*Strange way to center the active article? Works great.*/
+  z-index: 2;
+  max-height: 200px;
+}
+.getaccess__header {
+  background-color: var(--theme-g-bgc);
+  color: var(--theme-g-c);
+  border: solid medium var(--theme-g-brdr); 
+  text-align: center;
+  padding: 10px 0;
+}
+.getaccess__header > h3 {
+  margin: 0;
+}
+.getaccess__dimdiv {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0 0;
+  z-index: 1;
+  opacity: 0.8;
+  background-color: black;
+}
 .getaccess__content > div {
-  background-color: darkorchid;
-  border: thick double forestgreen;
+  background-color: var(--theme-g-bgc);
+  border: thick double var(--theme-g-brdr);
   padding: 4px 0 4px 10%;
   margin: 0 auto;
 }
@@ -13,20 +46,20 @@
   width: 30%;
 }
 .getaccess__content input {
-  background-color: lightsteelblue;
-  color: purple;
-  border: medium outset fuchsia;
+  background-color: var(--theme-g-bgc);
+  color: var(--theme-g-c);
+  border: medium outset var(--theme-g);
   border-radius: 10px;
   width: 100%;
 }
 .getaccess__content input:hover {
-  background-color: lightblue;
-  border: medium outset purple;
+  background-color: var(--theme-g-c);
+  border: medium outset var(--theme-g-brdr);
   color: black;
 }
 .getaccess__content input:active {
-  background-color: lightblue;
-  box-shadow: inset 3px 3px 2px 2px green;
+  background-color: var(--theme-g-c);
+  box-shadow: inset 3px 3px 2px 2px var(--theme-g-fg);
   color: black;
 }
 /*

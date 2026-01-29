@@ -1,5 +1,5 @@
 function accessObjectFn() {
-  const articleClassName = "getaccess__article";
+  const articleClassName = "getaccess__autharticle";
   const authenticateAccessModal = function authenticateAccessModal() { console.log("AUTHENTICATE"); };
   function getEightId() {
     const rand = Math.random().toString().slice(2);
@@ -15,7 +15,7 @@ function accessObjectFn() {
 
     articleClassName: articleClassName,
 
-    getArticle: function getAccessElement(headerText, paragraphText, submissionEndpoint) {
+    getAuthArticle: function getAccessElement(headerText, paragraphText, submissionEndpoint) {
       if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
       if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
       if (typeof submissionEndpoint !== "string") throw new Error("GetAccessModal submissionEndpoint must be a string.");
