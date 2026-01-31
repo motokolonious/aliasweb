@@ -67,6 +67,11 @@
       </div>
     </article>
     <script type="text/javascript">
+      (function addDocumentBodyEvents() {
+        document.body.addEventListener("keyup", (e) => {
+          if (e.key === "Escape") disableGetAccessContent();
+        }, true);
+      })();
       function setDomAccessElement(headerText, paragraphText, endpoint) {
         const accessObject = accessObjectFn();
         //Previously the article was appended like this:
@@ -87,13 +92,26 @@
         const modalArticle = document.getElementById(modalArticleId);
         if (modalArticle) modalArticle.setAttribute("class", "getaccess__article");
       }
+      function disableGetAccessContent() {
+        const articleId = "getaccess__article--h63o1jiuhz";
+        const targetClassName = "getaccess__article";
+        const accessArticle = document.getElementById(articleId);
+        if (accessArticle === null) throw new Error(`${articleId} not found.`);
+        accessArticle.setAttribute("class", targetClassName);
+
+        const dimdivClassName = "getaccess__dimdiv";
+        const dimdivs = document.getElementsByClassName(dimdivClassName);
+        if (dimdivs && dimdivs.length > 0) dimdivs[0].remove();
+      }
       function activateGetAccessContent() {
         const articleId = "getaccess__article--h63o1jiuhz";
         const targetClassName = "getaccess__article--active";
         const accessArticle = document.getElementById(articleId);
         if (accessArticle === null) throw new Error(`${articleId} not found.`);
         accessArticle.setAttribute("class", targetClassName);
+
         const dimdiv = document.createElement("div");
+        dimdiv.addEventListener("click", disableGetAccessContent);
         dimdiv.setAttribute("class", "getaccess__dimdiv");
         document.body.appendChild(dimdiv);
       }
