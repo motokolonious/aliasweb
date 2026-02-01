@@ -22,6 +22,24 @@
 .getaccess__header > h3 {
   margin: 0;
 }
+.getaccess__button {
+  width: 10%;
+  position: relative;/*Use flex?*/
+  inset: 0 45%;
+  padding: 10px;
+  border: solid medium var(--theme-bgc2);
+  color: var(--theme-c);
+  background-color: var(--theme-bgc);
+}
+.getaccess__button:hover {
+  border: solid medium var(--theme-c);
+  background-color: var(--theme);
+  cursor: pointer;
+}
+.getaccess__button:active {
+  color: var(--theme-c2);
+  border: solid medium var(--theme-c2);
+}
 .getaccess__dimdiv {
   width: 100%;
   height: 100%;
