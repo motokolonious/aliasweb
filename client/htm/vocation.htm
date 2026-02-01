@@ -57,13 +57,13 @@
       <header class="getaccess__header"><h3>Get Access!</h3></header>
       <div class="getaccess__content">
         <div>
-          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="setDomAccessElement(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
+          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="appendAuthArticle(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
         </div>
         <div>
-          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="setDomAccessElement(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
+          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="appendAuthArticle(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
         </div>
         <div>
-          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="setDomAccessElement(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
+          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="appendAuthArticle(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
         </div>
       </div>
     </article>
@@ -73,36 +73,30 @@
           if (e.key === "Escape") disableGetAccessContent();
         }, true);
       })();
-      function setDomAccessElement(headerText, paragraphText, endpoint) {
-        const accessObject = accessObjectFn();
-        //Previously the article was appended like this:
-        //document.body.insertAdjacentElement('beforeend', accessObject.getModalElement(headerText, paragraphText, endpoint));
-        //But now we're going to replace the lock svg with the access article
-        const lockArticle = document.getElementById("lockarticle--1999");
-        if (lockArticle) lockArticle.remove();
-
-        const accessArticles = document.getElementsByClassName(accessObject.articleClassName);
-        if (accessArticles && accessArticles.length > 0) accessArticles[0].remove();
-        document.body.prepend(accessObject.getAuthArticle(headerText, paragraphText, endpoint));
-
-        const dimdivClassName = "getaccess__dimdiv";
-        const dimdivs = document.getElementsByClassName(dimdivClassName);
-        if (dimdivs && dimdivs.length > 0) dimdivs[0].remove();
-
-        const modalArticleId = "getaccess__article--h63o1jiuhz";
-        const modalArticle = document.getElementById(modalArticleId);
-        if (modalArticle) modalArticle.setAttribute("class", "getaccess__article");
-      }
-      function disableGetAccessContent() {
+      function hideGetAccessArticle() {
         const articleId = "getaccess__article--h63o1jiuhz";
         const targetClassName = "getaccess__article";
         const accessArticle = document.getElementById(articleId);
         if (accessArticle === null) throw new Error(`${articleId} not found.`);
         accessArticle.setAttribute("class", targetClassName);
-
+      }
+      function removeDimDiv() {
         const dimdivClassName = "getaccess__dimdiv";
         const dimdivs = document.getElementsByClassName(dimdivClassName);
         if (dimdivs && dimdivs.length > 0) dimdivs[0].remove();
+      }
+      function appendAuthArticle(headerText, paragraphText, endpoint) {
+        hideGetAccessArticle();
+        const accessObject = accessObjectFn();
+        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint);
+        document.body.append(authArticle);
+      }
+      function disableGetAccessContent() {
+        hideGetAccessArticle();
+        removeDimDiv();
+        const authArticleClassName = "getaccess__autharticle";
+        const authArticles = document.getElementsByClassName(authArticleClassName);
+        if (authArticles.length > 0) authArticles[0].remove();
       }
       function activateGetAccessContent() {
         const articleId = "getaccess__article--h63o1jiuhz";

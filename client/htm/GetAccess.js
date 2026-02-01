@@ -15,7 +15,7 @@ function accessObjectFn() {
 
     articleClassName: articleClassName,
 
-    getAuthArticle: function getAccessElement(headerText, paragraphText, submissionEndpoint) {
+    getAuthArticle: function getAccessElement(headerText, paragraphText, submissionEndpoint, divwrap) {
       if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
       if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
       if (typeof submissionEndpoint !== "string") throw new Error("GetAccessModal submissionEndpoint must be a string.");
@@ -29,9 +29,8 @@ function accessObjectFn() {
 
       const textInput = document.createElement("input");
 
-      const buttonInput = document.createElement("input");
-      buttonInput.setAttribute("type", "button");
-      buttonInput.setAttribute("value", "Authenticate");
+      const buttonInput = document.createElement("button");
+      buttonInput.innerHTML = "Authenticate";
       buttonInput.addEventListener("click", authenticateAccessModal);
 
       const articleId = articleClassName + "--" + getEightId();
@@ -42,6 +41,12 @@ function accessObjectFn() {
       article.appendChild(paragraph);
       article.appendChild(buttonInput);
       article.appendChild(textInput);
+
+      if (divwrap) {
+        const divwrapper = document.createElement("div");
+        divwrapper.appendChild(article);
+        return divwrapper;
+      }
 
       return article;
     }

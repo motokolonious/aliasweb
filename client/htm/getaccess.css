@@ -12,6 +12,14 @@
   z-index: 2;
   max-height: 200px;
 }
+.getaccess__autharticle {
+  background-color: unset;
+  width: 40%;
+  position: fixed;
+  inset: 20% 0 0 30%;
+  z-index: 2;
+  max-height: 200px;
+}
 .getaccess__header {
   background-color: var(--theme);
   color: var(--theme-c2);
@@ -39,6 +47,16 @@
 .getaccess__button:active {
   color: var(--theme-c2);
   border: solid medium var(--theme-c2);
+}
+.getaccess__autharticle button {
+  padding: 10px 20px;
+  margin: 0 10px 0 0;
+  background-color: var(--theme);
+  color: var(--theme-c2);
+}
+.getaccess__autharticle input {
+  display: inline;
+  width: 60%;
 }
 .getaccess__dimdiv {
   width: 100%;
@@ -73,11 +91,12 @@
 .getaccess__content input:hover {
   background-color: var(--theme-c);
   border: medium outset var(--theme-brdr);
-  color: black;
+  color: var(--theme);
 }
 .getaccess__content input:active {
   background-color: var(--theme-c2);
   box-shadow: inset 3px 3px 2px 2px var(--theme-bgc2);
+  border: medium outset var(--theme);
   color: var(--theme);
 }
 /*
