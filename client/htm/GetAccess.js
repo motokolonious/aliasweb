@@ -21,7 +21,7 @@ function accessObjectFn() {
       if (typeof submissionEndpoint !== "string") throw new Error("GetAccessModal submissionEndpoint must be a string.");
       if (!submissionEndpoint.startsWith("https://aliasweb.me/api/")) throw new Error("GetAccessModal submissionEndpoint must start with {API}.");
 
-      const header = document.createElement("h5");
+      const header = document.createElement("h4");
       header.innerHTML = headerText;
 
       const paragraph = document.createElement("p");

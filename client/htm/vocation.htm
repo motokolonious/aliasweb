@@ -50,65 +50,48 @@
         </svg>
         <figcaption>You don't have a business token!</figcaption>
       </figure>
-      <button class="getaccess__button" onclick="activateGetAccessContent()">Get Access!</button>
+      <button class="getaccess__button" onclick="showGetAccessDialog()">Get Access!</button>
       <div class="med-division"></div>
     </article>
-    <article class="getaccess__article" id="getaccess__article--h63o1jiuhz">
-      <header class="getaccess__header"><h3>Get Access!</h3></header>
-      <div class="getaccess__content">
-        <div>
-          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="appendAuthArticle(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
+    <dialog id="getaccess__dialog--h63o1jiuhz" class="getaccess__dialog">
+      <article class="getaccess__article">
+        <header class="getaccess__header"><h3>Get Access!</h3></header>
+        <div class="getaccess__content">
+          <div>
+            <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="setAuthArticle(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
+          </div>
+          <div>
+            <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="setAuthArticle(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
+          </div>
+          <div>
+            <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="setAuthArticle(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
+          </div>
         </div>
-        <div>
-          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="appendAuthArticle(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
-        </div>
-        <div>
-          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="appendAuthArticle(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
-        </div>
-      </div>
-    </article>
+      </article>
+    </dialog>
     <script type="text/javascript">
-      (function addDocumentBodyEvents() {
-        document.body.addEventListener("keyup", (e) => {
-          if (e.key === "Escape") disableGetAccessContent();
-        }, true);
-      })();
-      function hideGetAccessArticle() {
-        const articleId = "getaccess__article--h63o1jiuhz";
-        const targetClassName = "getaccess__article";
-        const accessArticle = document.getElementById(articleId);
-        if (accessArticle === null) throw new Error(`${articleId} not found.`);
-        accessArticle.setAttribute("class", targetClassName);
+      const dialogId = "getaccess__dialog--h63o1jiuhz";
+      const dimdivClassName = "getaccess__dimdiv";
+      function showGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm) dialog.innerHTML = initDialogHtm;
+        dialog.showModal();
       }
-      function removeDimDiv() {
-        const dimdivClassName = "getaccess__dimdiv";
-        const dimdivs = document.getElementsByClassName(dimdivClassName);
-        if (dimdivs && dimdivs.length > 0) dimdivs[0].remove();
+      function closeGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        dialog.close();
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm === null) throw new Error("Expected to find the initial dialog HTM in session storage, but found nothing.");
+        dialog.innerHTML = initDialogHtm;
       }
-      function appendAuthArticle(headerText, paragraphText, endpoint) {
-        hideGetAccessArticle();
+      function setAuthArticle(headerText, paragraphText, endpoint) {
         const accessObject = accessObjectFn();
-        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint);
-        document.body.append(authArticle);
-      }
-      function disableGetAccessContent() {
-        hideGetAccessArticle();
-        removeDimDiv();
-        const authArticleClassName = "getaccess__autharticle";
-        const authArticles = document.getElementsByClassName(authArticleClassName);
-        if (authArticles.length > 0) authArticles[0].remove();
-      }
-      function activateGetAccessContent() {
-        const articleId = "getaccess__article--h63o1jiuhz";
-        const targetClassName = "getaccess__article--active";
-        const accessArticle = document.getElementById(articleId);
-        if (accessArticle === null) throw new Error(`${articleId} not found.`);
-        accessArticle.setAttribute("class", targetClassName);
-
-        const dimdiv = document.createElement("div");
-        dimdiv.addEventListener("click", disableGetAccessContent);
-        dimdiv.setAttribute("class", "getaccess__dimdiv");
-        document.body.appendChild(dimdiv);
+        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true);
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtml = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
+        dialog.innerHTML = authArticle.getHTML();
       }
     </script>
   </body>
