@@ -1,6 +1,6 @@
 #getaccess__dialog--h63o1jiuhz {
   width: 40%;
-  max-height: 200px;
+  max-height: 250px;
   margin: 12% auto 0 auto;/*The top margin here is a percentage of the containing width!.*/
   background-color: unset;
   border: solid thin var(--theme-c2);
@@ -41,7 +41,14 @@
   background-color: var(--theme-bgc);
   padding: 10px;
 }
+.getaccess__autharticle svg {
+  stroke: white;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
 .getaccess__autharticle :is(h3, h4, h5) {
+  margin: 0 auto 5px auto;
   text-align: center;
 }
 .getaccess__autharticle button {

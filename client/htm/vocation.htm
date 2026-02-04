@@ -71,7 +71,10 @@
     </dialog>
     <script type="text/javascript">
       const dialogId = "getaccess__dialog--h63o1jiuhz";
-      const dimdivClassName = "getaccess__dimdiv";
+      const dialog = document.getElementById(dialogId);
+      dialog.addEventListener("click", e => {//Auth article back button event handler.
+        if (e.target instanceof Element && e.target.tagName === "svg" && e.target.closest(".autharticleheader") !== null) showGetAccessDialog();
+      });
       function showGetAccessDialog() {
         const dialog = document.getElementById(dialogId);
         const initDialogHtm = window.sessionStorage.getItem(dialogId);
@@ -87,7 +90,7 @@
       }
       function setAuthArticle(headerText, paragraphText, endpoint) {
         const accessObject = accessObjectFn();
-        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true);
+        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true, "autharticleheader");
         const dialog = document.getElementById(dialogId);
         const initDialogHtml = window.sessionStorage.getItem(dialogId);
         if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
