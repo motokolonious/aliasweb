@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS aliasweb;
+CREATE DATABASE aliasweb;
