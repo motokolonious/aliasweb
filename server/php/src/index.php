@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="aliasweb.png">
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="root.css">
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
     <link rel="stylesheet" type="text/css" href="divisors.css">
     <link rel="stylesheet" type="text/css" href="default_access.css">
@@ -22,29 +23,38 @@
         width: 2em;
       }
       .header__vocationanchor {
-        --vocation-g: #039e1d;
-        --vocation-gb: #2cf59a;
-        color: white;
+        color: var(--theme-c);
         text-decoration: none;
       }
       .header__vocationanchor > span:nth-child(1) {
-        color: var(--vocation-g);
+        color: var(--theme-c);
         font-style: oblique 30deg;
         font-weight: 900;
       }
       .header__vocationanchor > span:nth-child(2) {
-        color: var(--vocation-g);
-        text-decoration: underline solid var(--vocation-g);
+        color: var(--theme-c);
+        text-decoration: underline solid var(--theme-c1);
       }
       .header__vocationanchor:hover {
-        color: var(--vocation-gb);
+        color: var(--theme-c2);
+        cursor: pointer;
+      }
+      .header__vocationanchor:hover > span {
+        color: var(--theme-c);
         cursor: pointer;
         text-decoration: none;
       }
-      .header__vocationanchor:hover > span {
-        color: white;
-        cursor: pointer;
-        text-decoration: none;
+      .header__srcodeanchor {
+        margin-left: 80%;
+        text-decoration-line: underline overline;
+        text-decoration-color: var(--theme-c1);
+        color: var(--theme-c);
+      }
+      .header__srcodeanchor:hover {
+        margin-left: 80%;
+        text-decoration-line: underline overline;
+        text-decoration-color: var(--theme-c2);
+        color: var(--theme-c2);
       }
     </style>
     <link rel="stylesheet" type="text/css" href="top_interests.css">
@@ -57,6 +67,7 @@
       </a>
       <div class="header__divisor"></div>
       <a class="header__vocationanchor" href="vocation.php">><span>V</span><span>ocational<span></a>
+      <a class="header__srcodeanchor" href="https://github.com/motokolonious/aliasweb">Site Source Code</a>
     </header>
     <article>
       <div class="aliascontainer">

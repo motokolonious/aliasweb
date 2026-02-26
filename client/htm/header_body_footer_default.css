@@ -11,7 +11,7 @@ header > a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: black;
+  background-color: var(--theme-bgc);
   text-decoration: none;
 }
 header img {
