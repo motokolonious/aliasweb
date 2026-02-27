@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="default_access.css">
     <style type="text/css">
       article > p, article h1 {
-        color: white;
+        color: var(--theme-c);
         margin: 0;
         text-align: center;
         font-family: "Merienda", "Kalam", fantasy;
@@ -38,11 +38,17 @@
       .header__vocationanchor:hover {
         color: var(--theme-c2);
         cursor: pointer;
+        text-decoration: none;
       }
-      .header__vocationanchor:hover > span {
-        color: var(--theme-c);
+      .header__vocationanchor:hover > span:nth-child(1) {
+        color: var(--theme-c2);
         cursor: pointer;
         text-decoration: none;
+      }
+      .header__vocationanchor:hover > span:nth-child(2) {
+        color: var(--theme-bgc2);
+        cursor: pointer;
+        text-decoration: underline dotted var(--theme-c2);
       }
       .header__srcodeanchor {
         margin-left: 80%;

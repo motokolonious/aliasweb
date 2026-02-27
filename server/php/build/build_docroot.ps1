@@ -12,8 +12,7 @@ if (-Not (Test-Path "..\docroot\")) {
 
 Copy-Item -Path "..\src\*.php" -Destination "..\docroot\"
 Copy-Item -Path "..\..\..\client\htm\*.css" -Destination "..\docroot\"
+Copy-Item -Path "..\..\..\client\htm\*.js" -Destination "..\docroot\"
 if (Test-Path -Path "..\..\..\client\htm\aliasweb.png") {
   Copy-Item -Path "..\..\..\client\htm\aliasweb.png" -Destination "..\docroot\"
 }
-Copy-Item -Path "..\..\..\client\js\Modules\Modal\GetAccessModal.mjs" -Destination "..\docroot\"
-Copy-Item -Path "..\..\..\client\js\Scripts\Modal\GetAccessModal.js" -Destination "..\docroot\"

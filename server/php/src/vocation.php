@@ -9,58 +9,18 @@
     <meta charset="UTF-8" />
     <meta name="description" content="A personal website for alias web." />
     <title>aliasweb</title>
+    <link rel="stylesheet" type="text/css" href="root.css">
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
     <link rel="stylesheet" type="text/css" href="divisors.css">
+    <link rel="stylesheet" type="text/css" href="getaccess.css">
     <style type="text/css">
       article figure {
         margin: 0;
         text-align: center;
-      }
-      body article:nth-of-type(2) {
-        width: 40%;
-      }
-      article > header {
-        background-color: darkslategray;
-        color: magenta;
-        text-align: center;
-        padding: 10px 0;
-      }
-      article > header > h3 {
-        margin: 0;
-      }
-      .getaccess__content > div {
-        background-color: darkorchid;
-        border: thick double forestgreen;
-        padding: 4px 0 4px 10%;
-        margin: 0 auto;
-      }
-      .getaccess__content > div > div:first-child {
-        display: inline-block;
-        width: 50%;
-      }
-      .getaccess__content > div > div + div {
-        display: inline-block;
-        width: 30%;
-      }
-      .getaccess__content input {
-        background-color: lightsteelblue;
-        color: purple;
-        border: medium outset fuchsia;
-        border-radius: 10px;
-        width: 100%;
-      }
-      .getaccess__content input:hover {
-        background-color: lightblue;
-        border: medium outset purple;
-        color: black;
-      }
-      .getaccess__content input:active {
-        background-color: lightblue;
-        box-shadow: inset 3px 3px 2px 2px green;
-        color: black;
+        padding: 0 0 25px 0;
       }
     </style>
-    <script src="GetAccessModal.js" type="text/javascript"></script>
+    <script src="GetAccess.js" type="text/javascript"></script>
     <script type="text/javascript">
       const sessionModalHeaderTxt = "Session Token";
       const sessionParagraphTxt = "This is mostly the same thing as a password. However, depending on how it was generated and distributed it might look long and incoherent. These tokens are deleted after your browsing session ends and the token data source is regularly purged just to be safe. You will not be able to use the same token again afterward.";
@@ -94,31 +54,51 @@
         </svg>
         <figcaption>You don't have a business token!</figcaption>
       </figure>
+      <button class="getaccess__button" onclick="showGetAccessDialog()">Get Access!</button>
       <div class="med-division"></div>
     </article>
-    <article>
-      <header class="getaccess__header"><h3>Get Access!</h3></header>
-      <div class="getaccess__content">
-        <div>
-          <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="openModal(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
+    <dialog id="getaccess__dialog--h63o1jiuhz" class="getaccess__dialog">
+      <article class="getaccess__article">
+        <header class="getaccess__header"><h3>Get Access!</h3></header>
+        <div class="getaccess__content">
+          <div>
+            <div><label>Single use session token:</label></div><div><input type="button" value="Go" onclick="setAuthArticle(sessionModalHeaderTxt, sessionParagraphTxt, accessEndpoint)"/></div>
+          </div>
+          <div>
+            <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="setAuthArticle(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
+          </div>
+          <div>
+            <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="setAuthArticle(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
+          </div>
         </div>
-        <div>
-          <div><label>Message authentication code:</label></div><div><input type="button" value="Go" onclick="openModal(macHeaderTxt, macParagraphTxt, accessEndpoint)"/></div>
-        </div>
-        <div>
-          <div><label>Identity and signature:</label></div><div><input type="button" value="Go" onclick="openModal(identityHeaderTxt, identityParagraphTxt, accessEndpoint)" /></div>
-        </div>
-      </div>
-    </article>
+      </article>
+    </dialog>
     <script type="text/javascript">
-      function disablePageInteractiveContent() {
-        let inputs = document.querySelectorAll("input");
-        console.log(inputs);
+      const dialogId = "getaccess__dialog--h63o1jiuhz";
+      const dialog = document.getElementById(dialogId);
+      dialog.addEventListener("click", e => {//Auth article back button event handler.
+        if (e.target instanceof Element && e.target.tagName === "svg" && e.target.closest(".autharticleheader") !== null) showGetAccessDialog();
+      });
+      function showGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm) dialog.innerHTML = initDialogHtm;
+        dialog.showModal();
       }
-      function openModal(headerText, paragraphText, endpoint, disableInputs) {
-        if (disableInputs) disablePageInteractiveContent();
-        const accessModalObject = getAccessModalObject();
-        document.body.insertAdjacentElement('beforeend', accessModalObject.getModalElement(headerText, paragraphText, endpoint));
+      function closeGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        dialog.close();
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm === null) throw new Error("Expected to find the initial dialog HTM in session storage, but found nothing.");
+        dialog.innerHTML = initDialogHtm;
+      }
+      function setAuthArticle(headerText, paragraphText, endpoint) {
+        const accessObject = accessObjectFn();
+        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true, "autharticleheader");
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtml = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
+        dialog.innerHTML = authArticle.getHTML();
       }
     </script>
   </body>
