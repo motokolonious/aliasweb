@@ -1,7 +1,7 @@
 function accessObjectFn() {
   /*Declaring these as hidden HTMLs instead might be less code, but then parameterizing them would require additional dom mutations.*/
   const articleClassName = "getaccess__autharticle";
-  const authenticateAccessModal = function authenticateAccessModal() { console.log("AUTHENTICATE"); };
+  const authBtnId = "authenticate__btn--y1g3lr4oyz";
   function getEightId() {
     const rand = Math.random().toString().slice(2);
     if (rand.length < 8) return rand;
@@ -35,6 +35,7 @@ function accessObjectFn() {
   }
   return {
     articleClassName: articleClassName,
+    authBtnId: authBtnId,
     getAuthArticle: function getAccessElement(headerText, paragraphText, submissionEndpoint, divwrap, includeBackBtn) {
       if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
       if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
@@ -51,7 +52,7 @@ function accessObjectFn() {
 
       const buttonInput = document.createElement("button");
       buttonInput.innerHTML = "Authenticate";
-      buttonInput.addEventListener("click", authenticateAccessModal);
+      buttonInput.setAttribute("id", authBtnId);
 
       const articleId = articleClassName + "--" + getEightId();
       const article = document.createElement("article");

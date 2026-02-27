@@ -95,6 +95,16 @@
         const initDialogHtml = window.sessionStorage.getItem(dialogId);
         if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
         dialog.innerHTML = authArticle.getHTML();
+        const authBtn = document.getElementById(accessObject.authBtnId);
+        //php version will have the authentication code.
+        if (authBtn) authBtn.addEventListener("click", () => assignNewLocation("resume.htm"));
+      }
+      function assignNewLocation(resourcePath) {
+        if (typeof resourcePath !== "string") return;
+        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
+        const lastfsIndex = document.URL.lastIndexOf('/');
+        const newUrl = document.URL.substring(0, lastfsIndex + 1) + resourcePath;
+        document.location.assign(newUrl);
       }
     </script>
   </body>
