@@ -2,6 +2,7 @@ function accessObjectFn() {
   /*Declaring these as hidden HTMLs instead might be less code, but then parameterizing them would require additional dom mutations.*/
   const articleClassName = "getaccess__autharticle";
   const authBtnId = "authenticate__btn--y1g3lr4oyz";
+  const authSessionTokenInputId = "authenticate__sessioninput--neou6mc441";
   function getEightId() {
     const rand = Math.random().toString().slice(2);
     if (rand.length < 8) return rand;
@@ -36,6 +37,7 @@ function accessObjectFn() {
   return {
     articleClassName: articleClassName,
     authBtnId: authBtnId,
+    authSessionTokenInputId: authSessionTokenInputId,
     getAuthArticle: function getAccessElement(headerText, paragraphText, submissionEndpoint, divwrap, includeBackBtn) {
       if (typeof headerText !== "string") throw new Error("GetAccessModal headerText must be a string.");
       if (typeof paragraphText !== "string") throw new Error("GetAccessModal paragraphText must be a string.");
@@ -49,6 +51,8 @@ function accessObjectFn() {
       paragraph.innerHTML = paragraphText;
 
       const textInput = document.createElement("input");
+      //For now the only authentication stuff is only on the vocation page, but it might be best to keep auth input info separated?
+      if (headerText.toLowerCase().includes("session")) textInput.setAttribute("id", authSessionTokenInputId);
 
       const buttonInput = document.createElement("button");
       buttonInput.innerHTML = "Authenticate";

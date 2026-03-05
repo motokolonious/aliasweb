@@ -19,6 +19,10 @@
         text-align: center;
         padding: 0 0 25px 0;
       }
+      dialog > p {
+        color: red;
+        text-align: center;
+      }
     </style>
     <script src="GetAccess.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -99,6 +103,37 @@
         const initDialogHtml = window.sessionStorage.getItem(dialogId);
         if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
         dialog.innerHTML = authArticle.getHTML();
+        const authBtn = document.getElementById(accessObject.authBtnId);
+        if (authBtn) authBtn.addEventListener("click", () => validateSessionTokenAsync(accessObject.authSessionTokenInputId));
+      }
+      function getUrlRoot() {
+        const lastfsIndex = document.URL.lastIndexOf('/');
+        return document.URL.substring(0, lastfsIndex + 1);
+      }
+      function assignNewLocation(resourcePath) {
+        if (typeof resourcePath !== "string") return;
+        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
+        const newUrl = getUrlRoot() + resourcePath;
+        document.location.assign(newUrl);
+      }
+      async function validateSessionTokenAsync(sessionInputId) {
+        console.log(sessionInputId);
+        const clientSessionInput = document.getElementById(sessionInputId);
+        const token = clientSessionInput.value;
+        if (typeof token !== "string" || token === null || token === undefined) return false;
+        const ttoken = token.trim();
+        if (ttoken.length < 5) return false;
+        const vurl = getUrlRoot() + "validate_session_token.php";
+        const response = await fetch(vurl);
+        if (response.ok) {
+          assignNewLocation("resume.php");
+        } else {
+          const dialogId = "getaccess__dialog--h63o1jiuhz";
+          const dialog = document.getElementById(dialogId);
+          const failedAuthPara = document.createElement("p");
+          failedAuthPara.innerHTML = "Authentication failed. Please use a valid authentication mechanism to view vocational information.";
+          dialog.appendChild(failedAuthPara);
+        }
       }
     </script>
   </body>
