@@ -25,6 +25,30 @@
       const identityHeaderTxt = "Divine Identity";
       const identityParagraphTxt = "A fully verified identity implemented using digital signatures and more. It is unlikely you have one of these.";
       const accessEndpoint = "https://aliasweb.me/api/get_token";
+      function showGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm) dialog.innerHTML = initDialogHtm;
+        dialog.showModal();
+      }
+      function closeGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        dialog.close();
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm === null) throw new Error("Expected to find the initial dialog HTM in session storage, but found nothing.");
+        dialog.innerHTML = initDialogHtm;
+      }
+      function setAuthArticle(headerText, paragraphText, endpoint) {
+        const accessObject = accessObjectFn();
+        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true, "autharticleheader");
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtml = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
+        dialog.innerHTML = authArticle.getHTML();
+        const authBtn = document.getElementById(accessObject.authBtnId);
+        //php version will have the authentication code.
+        if (authBtn) authBtn.addEventListener("click", () => assignNewLocation("resume.htm"));
+      }
     </script>
   </head>
   <header>
@@ -69,48 +93,23 @@
         </div>
       </article>
     </dialog>
+    <footer>
+      <p>&#9888;&#128274;&#9888;</p>
+      <br />
+      <p>&#169;copyright! jk not really&#169;</p>
+    </footer>
     <script type="text/javascript">
       const dialogId = "getaccess__dialog--h63o1jiuhz";
       const dialog = document.getElementById(dialogId);
       dialog.addEventListener("click", e => {//Auth article back button event handler.
         if (e.target instanceof Element && e.target.tagName === "svg" && e.target.closest(".autharticleheader") !== null) showGetAccessDialog();
       });
-      function showGetAccessDialog() {
-        const dialog = document.getElementById(dialogId);
-        const initDialogHtm = window.sessionStorage.getItem(dialogId);
-        if (initDialogHtm) dialog.innerHTML = initDialogHtm;
-        dialog.showModal();
-      }
-      function closeGetAccessDialog() {
-        const dialog = document.getElementById(dialogId);
-        dialog.close();
-        const initDialogHtm = window.sessionStorage.getItem(dialogId);
-        if (initDialogHtm === null) throw new Error("Expected to find the initial dialog HTM in session storage, but found nothing.");
-        dialog.innerHTML = initDialogHtm;
-      }
-      function setAuthArticle(headerText, paragraphText, endpoint) {
-        const accessObject = accessObjectFn();
-        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true, "autharticleheader");
-        const dialog = document.getElementById(dialogId);
-        const initDialogHtml = window.sessionStorage.getItem(dialogId);
-        if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
-        dialog.innerHTML = authArticle.getHTML();
-        const authBtn = document.getElementById(accessObject.authBtnId);
-        //php version will have the authentication code.
-        if (authBtn) authBtn.addEventListener("click", () => assignNewLocation("resume.htm"));
-      }
       function assignNewLocation(resourcePath) {
-        if (typeof resourcePath !== "string") return;
-        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
+        if (typeof resourcePath !== "string" || !resourcePath.endsWith("htm")) return;
         const lastfsIndex = document.URL.lastIndexOf('/');
         const newUrl = document.URL.substring(0, lastfsIndex + 1) + resourcePath;
         document.location.assign(newUrl);
       }
     </script>
   </body>
-  <footer>
-    <p>&#9888;&#128274;&#9888;</p>
-    <br />
-    <p>&#169;copyright! jk not really&#169;</p>
-  </footer>
 </html>

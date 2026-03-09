@@ -33,6 +33,29 @@
       const identityHeaderTxt = "Divine Identity";
       const identityParagraphTxt = "A fully verified identity implemented using digital signatures and more. It is unlikely you have one of these.";
       const accessEndpoint = "https://aliasweb.me/api/get_token";
+      function showGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm) dialog.innerHTML = initDialogHtm;
+        dialog.showModal();
+      }
+      function closeGetAccessDialog() {
+        const dialog = document.getElementById(dialogId);
+        dialog.close();
+        const initDialogHtm = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtm === null) throw new Error("Expected to find the initial dialog HTM in session storage, but found nothing.");
+        dialog.innerHTML = initDialogHtm;
+      }
+      function setAuthArticle(headerText, paragraphText, endpoint) {
+        const accessObject = accessObjectFn();
+        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true, "autharticleheader");
+        const dialog = document.getElementById(dialogId);
+        const initDialogHtml = window.sessionStorage.getItem(dialogId);
+        if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
+        dialog.innerHTML = authArticle.getHTML();
+        const authBtn = document.getElementById(accessObject.authBtnId);
+        if (authBtn) authBtn.addEventListener("click", () => validateSessionTokenAsync(accessObject.authSessionTokenInputId));
+      }
     </script>
   </head>
   <body>
@@ -77,35 +100,17 @@
         </div>
       </article>
     </dialog>
+    <footer>
+      <p>&#9888;&#128274;&#9888;</p>
+      <br />
+      <p>&#169;copyright! jk not really&#169;</p>
+    </footer>
     <script type="text/javascript">
       const dialogId = "getaccess__dialog--h63o1jiuhz";
       const dialog = document.getElementById(dialogId);
       dialog.addEventListener("click", e => {//Auth article back button event handler.
         if (e.target instanceof Element && e.target.tagName === "svg" && e.target.closest(".autharticleheader") !== null) showGetAccessDialog();
       });
-      function showGetAccessDialog() {
-        const dialog = document.getElementById(dialogId);
-        const initDialogHtm = window.sessionStorage.getItem(dialogId);
-        if (initDialogHtm) dialog.innerHTML = initDialogHtm;
-        dialog.showModal();
-      }
-      function closeGetAccessDialog() {
-        const dialog = document.getElementById(dialogId);
-        dialog.close();
-        const initDialogHtm = window.sessionStorage.getItem(dialogId);
-        if (initDialogHtm === null) throw new Error("Expected to find the initial dialog HTM in session storage, but found nothing.");
-        dialog.innerHTML = initDialogHtm;
-      }
-      function setAuthArticle(headerText, paragraphText, endpoint) {
-        const accessObject = accessObjectFn();
-        const authArticle = accessObject.getAuthArticle(headerText, paragraphText, endpoint, true, "autharticleheader");
-        const dialog = document.getElementById(dialogId);
-        const initDialogHtml = window.sessionStorage.getItem(dialogId);
-        if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
-        dialog.innerHTML = authArticle.getHTML();
-        const authBtn = document.getElementById(accessObject.authBtnId);
-        if (authBtn) authBtn.addEventListener("click", () => validateSessionTokenAsync(accessObject.authSessionTokenInputId));
-      }
       function getUrlRoot() {
         const lastfsIndex = document.URL.lastIndexOf('/');
         return document.URL.substring(0, lastfsIndex + 1);
@@ -117,29 +122,37 @@
         document.location.assign(newUrl);
       }
       async function validateSessionTokenAsync(sessionInputId) {
-        console.log(sessionInputId);
         const clientSessionInput = document.getElementById(sessionInputId);
         const token = clientSessionInput.value;
         if (typeof token !== "string" || token === null || token === undefined) return false;
         const ttoken = token.trim();
         if (ttoken.length < 5) return false;
         const vurl = getUrlRoot() + "validate_session_token.php";
-        const response = await fetch(vurl);
-        if (response.ok) {
+        const response = await fetch(vurl, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: `token=${token}` });
+        //console.log(response.status);
+        //await logResponseTextAsync(response.body);
+        if (response.status === 200) {
           assignNewLocation("resume.php");
-        } else {
-          const dialogId = "getaccess__dialog--h63o1jiuhz";
+        } else if (document.querySelector("#" + dialogId + " > p") === null) {
           const dialog = document.getElementById(dialogId);
           const failedAuthPara = document.createElement("p");
           failedAuthPara.innerHTML = "Authentication failed. Please use a valid authentication mechanism to view vocational information.";
           dialog.appendChild(failedAuthPara);
         }
       }
+      async function logResponseTextAsync(respbody) {
+        const decoder = new TextDecoder();
+        const reader = respbody.getReader();
+        let data = await reader.read();
+        console.log(decoder.decode(data.value));
+        let blanks = 0;
+        while (!data.done && blanks < 10) {
+          data = await reader.read();
+          const txt = decoder.decode(data.value);
+          if (txt === "") blanks++;
+          console.log(txt);
+        }
+      }
     </script>
   </body>
-  <footer>
-    <p>&#9888;&#128274;&#9888;</p>
-    <br />
-    <p>&#169;copyright! jk not really&#169;</p>
-  </footer>
 </html>
