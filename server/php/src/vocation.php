@@ -29,7 +29,7 @@
       const sessionModalHeaderTxt = "Session Token";
       const sessionParagraphTxt = "This is mostly the same thing as a password. However, depending on how it was generated and distributed it might look long and incoherent. These tokens are deleted after your browsing session ends and the token data source is regularly purged just to be safe. You will not be able to use the same token again afterward.";
       const macHeaderTxt = "Message Authentication Code";
-      const macParagraphTxt = "An encrypted and authenticated value which verifies message integrity. The message can be any passphrase or paragraph. Valid input duration periods are negotiated when the code is created.";
+      const macParagraphTxt = "An authentication value that verifies message integrity. The algorithm for generating this value is well described in the NIST.FIPS.198-1 publication. You must know the message and the shared key to generate the right MAC value. Post the value here to gain access.";
       const identityHeaderTxt = "Divine Identity";
       const identityParagraphTxt = "A fully verified identity implemented using digital signatures and more. It is unlikely you have one of these.";
       const accessEndpoint = "https://aliasweb.me/api/get_token";
@@ -53,8 +53,15 @@
         const initDialogHtml = window.sessionStorage.getItem(dialogId);
         if (initDialogHtml === null) window.sessionStorage.setItem(dialogId, dialog.getHTML());
         dialog.innerHTML = authArticle.getHTML();
+
+        const lhead = headerText.toLowerCase();
         const authBtn = document.getElementById(accessObject.authBtnId);
-        if (authBtn) authBtn.addEventListener("click", () => validateSessionTokenAsync(accessObject.authSessionTokenInputId));
+        if (authBtn && lhead.includes("session")) authBtn.addEventListener("click", () => validateTokenAsync(accessObject.authSessionTokenInputId, "validate_session_token.php"));
+        //There could be a more interactive MAC dialog where the user is prompted to enter required values such as the message and the private key.
+        //Completing the form would generate the expected MAC value, ideally without sending the private key over any networks.
+        //This would be user-friendly and educational, however, there would be security risks and additional work to do (the current Web Crypto API HMAC signature format does not match PHP's HMAC hexit format).
+        //So for now the user must be able to generate the right MAC value themselves (most likely by using some PHP commands on their own machine).
+        else if (authBtn && lhead.includes("message authentication")) authBtn.addEventListener("click", () => validateTokenAsync(accessObject.macvalInputId, "validate_mac_value.php"));
       }
     </script>
   </head>
@@ -121,13 +128,14 @@
         const newUrl = getUrlRoot() + resourcePath;
         document.location.assign(newUrl);
       }
-      async function validateSessionTokenAsync(sessionInputId) {
-        const clientSessionInput = document.getElementById(sessionInputId);
-        const token = clientSessionInput.value;
+      async function validateTokenAsync(inputId, file) {
+        const input = document.getElementById(inputId);
+        if (input === null) return false;
+        const token = input.value;
         if (typeof token !== "string" || token === null || token === undefined) return false;
         const ttoken = token.trim();
         if (ttoken.length < 5) return false;
-        const vurl = getUrlRoot() + "validate_session_token.php";
+        const vurl = getUrlRoot() + file;
         const response = await fetch(vurl, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: `token=${token}` });
         //console.log(response.status);
         //await logResponseTextAsync(response.body);
