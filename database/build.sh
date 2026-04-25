@@ -62,20 +62,31 @@ dbvlist() {
     # Numerical sort should do okay here, unless someone stacks the same version (creates a sorting tie). Behavior would be non-deterministic in this case.
     for l in $(dbvdirv | sort -n)
     do
-        dbv=$(echo $l | cut -d "|" -f 1)
-        fp=$(echo $l | cut -d "|" -f 2)
+        # dbv=$(echo $l | cut -d "|" -f 1)
+        # fp=$(echo $l | cut -d "|" -f 2)
         echo $l
     done
 }
 
-# Check for -l or --list flag
-getopts :l opt
-shl_opt=$?
-test "$1" = "--list"
-ll_opt=$?
-if { test $shl_opt -eq 0 -o $ll_opt -eq 0; }
-then shift
-fi
+list_opt=-1
+user_opt=-1
+verbose_opt=-1
+while getopts :lvu:: opt
+do {
+    if test $opt = "l" -o "$1" = "--list"; then
+        list_opt=0
+        shift
+    fi
+    if test $opt = "u"; then
+        user_opt=0
+        shift
+    fi
+    if test $opt = "v"; then
+        verbose_opt=0
+        shift
+    fi
+}
+done
 
 # case to select the database client program which must be specified
 case $1 in
@@ -102,10 +113,19 @@ if { test -d "$2" -a -d "$2/0" -a -d "$2/100"; }
 then {
     echo "Valid $cmd directories were found. Database versions will be sorted.";
     dbvdir=$2
-    if { test $shl_opt -eq 0 -o $ll_opt -eq 0; }
-    then { echo "Listing database versions.. no connections or SQL will be executed.."; dbvlist; exit 0; }
+    if { test $list_opt -eq 0; }
+    then { echo "Listing database versions.. no connections or SQL will be executed."; dbvlist; exit 0; }
     fi
-    echo "Executing SQL scripts in ascending version order.. (not yet implemented)."
+    for l in $(dbvlist)
+    do
+        dbv=$(echo $l | cut -d "|" -f 1)
+        fp=$(echo $l | cut -d "|" -f 2)
+        if test $verbose_opt -eq 0; then
+            echo "Applying database version $dbv at file path $fp"
+	    $(exec $cmd <$fp)
+	    else $(exec $cmd <$fp >/dev/null)
+        fi
+    done
 }
 else {
     echo "Required $cmd directories not found!";
