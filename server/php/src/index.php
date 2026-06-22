@@ -101,13 +101,11 @@
       <br />
       <h3>Top Interests</h3>
       <ul>
-        <li><a href="skateboarding.php">Skateboarding</a></li>
-        <li>Free software</li>
-        <li>Gaming</li>
-        <li>Learning languages</li>
-        <li>Basketball</li>
-        <li>Music & guitar</li>
+        <li>Health</li>
+        <li>Human languages</li>
         <li>Daydreams</li>
+        <li><a href="skateboarding.php">Sports</a></li>
+        <li><a href="freesoftware.php">Software</a></li>
       </ul>
       <br />
       <div class="med-division"></div>
