@@ -21,42 +21,51 @@
       .header__divisor {
         width: 2em;
       }
-      .header__vocationanchor {
+      .header__vocanchor {
         color: var(--theme-c);
         text-decoration: none;
       }
-      .header__vocationanchor > span:nth-child(1) {
+      .header__vocanchor > span:nth-child(1) {
         color: var(--theme-c);
         font-style: oblique 30deg;
         font-weight: 900;
       }
-      .header__vocationanchor > span:nth-child(2) {
+      .header__vocanchor > span:nth-child(2) {
         color: var(--theme-c);
         text-decoration: underline solid var(--theme-c1);
       }
-      .header__vocationanchor:hover {
+      .header__vocanchor:hover {
         color: var(--theme-c2);
         cursor: pointer;
         text-decoration: none;
       }
-      .header__vocationanchor:hover > span:nth-child(1) {
+      .header__vocanchor:hover > span:nth-child(1) {
         color: var(--theme-c2);
         cursor: pointer;
         text-decoration: none;
       }
-      .header__vocationanchor:hover > span:nth-child(2) {
+      .header__vocanchor:hover > span:nth-child(2) {
         color: var(--theme-bgc2);
         cursor: pointer;
         text-decoration: underline dotted var(--theme-c2);
       }
+      .header__langsel {
+        margin: 10px 0 0 25%;
+        color: var(--theme-c2);
+      }
+      #header__langselect {
+        background-color: var(--theme-bgc);
+        color: var(--theme-c);
+        border: none;
+      }
       .header__srcodeanchor {
-        margin-left: 80%;
+        margin: 0 25px 0 auto;
         text-decoration-line: underline overline;
         text-decoration-color: var(--theme-c1);
         color: var(--theme-c);
       }
       .header__srcodeanchor:hover {
-        margin-left: 80%;
+        margin: 0 25px 0 auto;
         text-decoration-line: underline overline;
         text-decoration-color: var(--theme-c2);
         color: var(--theme-c2);
@@ -71,7 +80,14 @@
         <p>Alias Web</p>
       </a>
       <div class="header__divisor"></div>
-      <a class="header__vocationanchor" href="vocation.htm">><span>V</span><span>ocational<span></a>
+      <a class="header__vocanchor" href="vocation.htm">><span>V</span><span>ocational<span></a>
+      <div class="header__langsel">
+        <label for="header__langselect">Lang:</label>
+        <select id="header__langselect">
+          <option>English</option>
+          <option>Arabic</option>
+        </select>
+      </div>
       <a class="header__srcodeanchor" href="https://github.com/motokolonious/aliasweb">Site Source Code</a>
     </header>
     <article>
