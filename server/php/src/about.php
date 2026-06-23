@@ -1,0 +1,34 @@
+<?php include 'set_session_alias.php'; ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="A personal website for alias web." />
+    <title>aliasweb</title>
+    <link rel="icon" type="image/png" href="aliasweb.png">
+    <link rel="stylesheet" type="text/css" href="root.css">
+    <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
+    <link rel="stylesheet" type="text/css" href="divisors.css">
+    <style type="text/css">
+      body > p {
+        color: var(--theme-c);
+        background-color: var(--theme-bgc1);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.php">
+        <img src="aliasweb.png" alt="" />
+        <p><span><?php include 'get_session_alias.php';?></span> Web</p>
+      </a>
+    </header>
+    <p>This website is a personal one for me to learn more about software and more successfully interact with users and employers. The domain name 'aliasweb.me' uses the 'me' suffix in the English word usage and does not refer to the European country of Montenegro with the same two-letter code. If this is problem please send me an email (to goblindrum@tuta.com) so I can reassess my domain usage and options.</p>
+    <div class="sml-division"></div>
+    <footer>
+      <p>&#9888;More content is available to trusted users&#9888;</p>
+      <br />
+      <p>&#169;copyright! jk not really&#169;</p>
+    </footer>
+  </body>
+</html>

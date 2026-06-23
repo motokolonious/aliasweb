@@ -71,6 +71,22 @@
         text-decoration-color: var(--theme-c2);
         color: var(--theme-c2);
       }
+      .profileabt {
+        display: flex;
+        justify-direction: row;
+        justify-content: center;
+        color: var(--theme-c1);
+        background-color: var(--theme-bgc2);
+      }
+      .profileabt > * {
+        padding: 0 8px 0 8px;
+        margin: 3px 0 3px 0;
+        text-decoration: underline overline;
+        color: var(--theme-c1);
+      }
+      .profileabt > *:hover {
+        color: var(--theme-c);
+      }
     </style>
     <link rel="stylesheet" type="text/css" href="top_interests.css">
   </head>
@@ -108,6 +124,10 @@
         <li><a href="freesoftware.php">Software</a></li>
       </ul>
       <br />
+      <div class="profileabt">
+        <a href="profile.php">Profile</a>
+        <a href="about.php">About</a>
+      </div>
       <div class="med-division"></div>
     </article>
     <footer>
