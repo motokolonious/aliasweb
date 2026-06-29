@@ -50,11 +50,11 @@
         cursor: pointer;
         text-decoration: underline dotted var(--theme-c2);
       }
-      .header__langsel {
-        margin: 10px 0 0 25%;
+      .header__langsel, .header__themesel {
+        margin: 10px 0 0 22%;
         color: var(--theme-c2);
       }
-      #header__langselect {
+      #header__langselect, #header__themeselect {
         background-color: var(--theme-bgc);
         color: var(--theme-c);
         border: none;
@@ -103,6 +103,14 @@
         <select id="header__langselect">
           <option>English</option>
           <option>Arabic</option>
+        </select>
+      </div>
+      <div class="header__themesel">
+        <label for="header__themeselect">Theme:</label>
+        <select id="header__themeselect">
+          <option>Earth</option>
+          <option>Moon</option>
+          <option>Forest</option>
         </select>
       </div>
       <a class="header__srcodeanchor" href="https://github.com/motokolonious/aliasweb">Site Source Code</a>
