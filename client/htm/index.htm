@@ -11,82 +11,7 @@
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
     <link rel="stylesheet" type="text/css" href="divisors.css">
     <link rel="stylesheet" type="text/css" href="default_access.css">
-    <style type="text/css">
-      article > p, article h1 {
-        color: var(--theme-c);
-        margin: 0;
-        text-align: center;
-        font-family: "Merienda", "Kalam", fantasy;
-      }
-      .header__divisor {
-        width: 2em;
-      }
-      .header__vocanchor {
-        color: var(--theme-c);
-        text-decoration: none;
-      }
-      .header__vocanchor > span:nth-child(1) {
-        color: var(--theme-c);
-        font-style: oblique 30deg;
-        font-weight: 900;
-      }
-      .header__vocanchor > span:nth-child(2) {
-        color: var(--theme-c);
-        text-decoration: underline solid var(--theme-c1);
-      }
-      .header__vocanchor:hover {
-        color: var(--theme-c2);
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .header__vocanchor:hover > span:nth-child(1) {
-        color: var(--theme-c2);
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .header__vocanchor:hover > span:nth-child(2) {
-        color: var(--theme-bgc2);
-        cursor: pointer;
-        text-decoration: underline dotted var(--theme-c2);
-      }
-      .header__langsel, .header__themesel {
-        margin: 10px 0 0 22%;
-        color: var(--theme-c2);
-      }
-      #header__langselect, #header__themeselect {
-        background-color: var(--theme-bgc);
-        color: var(--theme-c);
-        border: none;
-      }
-      .header__srcodeanchor {
-        margin: 0 25px 0 auto;
-        text-decoration-line: underline overline;
-        text-decoration-color: var(--theme-c1);
-        color: var(--theme-c);
-      }
-      .header__srcodeanchor:hover {
-        margin: 0 25px 0 auto;
-        text-decoration-line: underline overline;
-        text-decoration-color: var(--theme-c2);
-        color: var(--theme-c2);
-      }
-      .profileabt {
-        display: flex;
-        justify-direction: row;
-        justify-content: center;
-        color: var(--theme-c1);
-        background-color: var(--theme-bgc2);
-      }
-      .profileabt > * {
-        padding: 0 8px 0 8px;
-        margin: 3px 0 3px 0;
-        text-decoration: underline overline;
-        color: var(--theme-c1);
-      }
-      .profileabt > *:hover {
-        color: var(--theme-c);
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="top_interests.css">
   </head>
   <body>
@@ -102,6 +27,7 @@
         <select id="header__langselect">
           <option>English</option>
           <option>Arabic</option>
+          <option value="Arabic">عربي</option>
         </select>
       </div>
       <div class="header__themesel">
@@ -142,5 +68,24 @@
       <br />
       <p>&#169;copyright! jk not really&#169;</p>
     </footer>
+    <script type="text/javascript">
+      function getUrlRoot() {
+        const lastfsIndex = document.URL.lastIndexOf('/');
+        return document.URL.substring(0, lastfsIndex + 1);
+      }
+      function assignNewLocation(resourcePath) {
+        if (typeof resourcePath !== "string") return;
+        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
+        const newUrl = getUrlRoot() + resourcePath;
+        document.location.assign(newUrl);
+      }
+      const langselid = "header__langselect";
+      const langsel = document.getElementById(langselid);
+      langsel.addEventListener("change", e => {
+        if (e.target.value === "Arabic") {
+          assignNewLocation("index.ar.htm");
+        }
+      });
+    </script>
   </body>
 </html>

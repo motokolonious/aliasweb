@@ -19,55 +19,54 @@
     <header>
       <a>
         <img src="aliasweb.png" alt="" />
-        <p><span><?php include 'get_session_alias.php';?></span> Web</p>
+        <p><span><?php $lang = 'ar'; include 'get_session_alias.php'; ?></span> ويب</p>
       </a>
       <div class="header__divisor"></div>
-      <a class="header__vocanchor" href="vocation.php">><span>V</span><span>ocational<span></a>
+      <a class="header__vocanchor" href="vocation.php">><span>مهنة<span></a>
       <div class="header__langsel">
-        <label for="header__langselect">Lang:</label>
         <select id="header__langselect">
-          <option>English</option>
-          <option>Arabic</option>
           <option value="Arabic">عربي</option>
+          <option value="English">إنجليزي</option>
+          <option value="English">English</option>
         </select>
+        <label for="header__langselect">:لغة</label>
       </div>
       <div class="header__themesel">
-        <label for="header__themeselect">Theme:</label>
         <select id="header__themeselect">
-          <option>Earth</option>
-          <option>Moon</option>
-          <option>Forest</option>
+          <option>الأرض</option>
+          <option>القمر</option>
+          <option>الغابة</option>
         </select>
+        <label for="header__themeselect">:ألوان</label>
       </div>
-      <a class="header__srcodeanchor" href="https://github.com/motokolonious/aliasweb">Site Source Code</a>
+      <a class="header__srcodeanchor" href="https://github.com/motokolonious/aliasweb">شفرة مصدرية</a>
     </header>
     <article>
       <div class="aliascontainer">
-        <h1>Hi. I'm <span class="alias"><?php include 'get_session_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
+        <h1 dir="rtl">اهلا، أنا <span class="alias"><?php $lang = 'ar'; include 'get_session_alias.php'; ?><span class="aliasinfo">اسم مستعار</span></span></h1>
       </div>
       <br />
-      <p>I'm a programmer who wants to keep his skills up, collaborate with peers, and provide employers with vital information. Please peruse the site at your leisure!</p>
-      <p>I have a lot of unfinished projects and interests. Please help! See the list below to find out more.</p>
+      <p>!أنا مبرمج وعربيي سيء، مساعدني</p>
       <br />
-      <h3>Top Interests</h3>
+      <h3>اهتمامات عظيمة</h3>
       <ul>
-        <li>Health</li>
-        <li>Human languages</li>
-        <li>Daydreams</li>
-        <li><a href="skateboarding.php">Sports</a></li>
-        <li><a href="freesoftware.php">Software</a></li>
+        <li>صحة</li>
+        <li>اللغات الإنسان</li>
+        <li>أحلام</li>
+        <li><a href="skateboarding.php">الرياضة</a></li>
+        <li><a href="freesoftware.php">برمجة</a></li>
       </ul>
       <br />
       <div class="profileabt">
-        <a href="profile.php">Profile</a>
-        <a href="about.php">About</a>
+        <a href="profile.php">حساب</a>
+        <a href="about.php">عن هذا موقع</a>
       </div>
       <div class="med-division"></div>
     </article>
     <footer>
-      <p>&#9888;More content is available to verified users&#9888;</p>
+      <p>&#9888;محتوى إضاف متاح لمستخدم حقيقي&#9888;</p>
       <br />
-      <p>&#169;copyright! jk not really&#169;</p>
+      <p>&#169;قانون&#169;</p>
     </footer>
     <script type="text/javascript">
       function getUrlRoot() {
@@ -83,8 +82,8 @@
       const langselid = "header__langselect";
       const langsel = document.getElementById(langselid);
       langsel.addEventListener("change", e => {
-        if (e.target.value === "Arabic") {
-          assignNewLocation("index.ar.php");
+        if (e.target.value === "English") {
+          assignNewLocation("index.php");
         }
       });
     </script>
