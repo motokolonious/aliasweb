@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="aliasweb.png">
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="root.css">
+    <link id="theme_earth" rel="stylesheet" type="text/css" href="theme_earth.css">
     <link rel="stylesheet" type="text/css" href="header_body_footer_default.css">
     <link rel="stylesheet" type="text/css" href="divisors.css">
     <link rel="stylesheet" type="text/css" href="default_access.css">
@@ -80,11 +80,51 @@
         const newUrl = getUrlRoot() + resourcePath;
         document.location.assign(newUrl);
       }
+      function removeElementById(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+      }
+      function removeThemeLinks() {
+        removeElementById("theme_earth");
+        removeElementById("theme_moon");
+        removeElementById("theme_forest");
+      }
+      function setThemeLink(themeName) {
+        removeThemeLinks();
+        const themeLink = document.createElement("link");
+        themeLink.setAttribute("rel", "stylesheet");
+        themeLink.setAttribute("type", "text/css");
+        if (themeName && themeName.toLowerCase() === "earth") {
+          themeLink.setAttribute("href", "theme_earth.css");
+          themeLink.setAttribute("id", "theme_earth");
+        } else if (themeName && themeName.toLowerCase() === "moon") {
+          themeLink.setAttribute("href", "theme_moon.css");
+          themeLink.setAttribute("id", "theme_moon");
+        } else if (themeName && themeName.toLowerCase() === "forest") {
+          themeLink.setAttribute("href", "theme_forest.css");
+          themeLink.setAttribute("id", "theme_forest");
+        }
+        document.head.appendChild(themeLink);
+      }
       const langselid = "header__langselect";
       const langsel = document.getElementById(langselid);
       langsel.addEventListener("change", e => {
         if (e.target.value === "Arabic") {
           assignNewLocation("index.ar.php");
+        }
+      });
+      const themeselid = "header__themeselect";
+      const themesel = document.getElementById(themeselid);
+      themesel.addEventListener("change", e => {
+        if (e.target.value === "Earth" || e.target.value === "earth") {
+          window.sessionStorage.setItem("aliasweb_theme", "earth");
+          setThemeLink("earth");
+        } else if (e.target.value === "Moon" || e.target.value === "moon") {
+          window.sessionStorage.setItem("aliasweb_theme", "moon");
+          setThemeLink("moon");
+        } else if (e.target.value === "Forest" || e.target.value === "forest") {
+          window.sessionStorage.setItem("aliasweb_theme", "forest");
+          setThemeLink("forest");
         }
       });
     </script>

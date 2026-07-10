@@ -1,0 +1,10 @@
+:root {
+  /*The moon theme.*/
+  --theme: #30343F;/*near black*/
+  --theme-bgc: #30343F;/*middle grey*/
+  --theme-bgc1: #1E2749;/*dark blue*/
+  --theme-bgc2: #273469;/*less dark blue*/
+  --theme-c: #FAFAFF;/*moon white*/
+  --theme-c1: #E4D9FF;/*very light purple*/
+  --theme-brdr: black;
+}

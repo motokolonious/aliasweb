@@ -1,0 +1,11 @@
+:root {
+  /*The forest theme.*/
+  --theme: #132A13;/*very dark green*/
+  --theme-bgc: #132A13;
+  --theme-bgc1: #31572C;
+  --theme-bgc2: #4f772D;
+  --theme-c: #ECF39E;/*almost yellow*/
+  --theme-c1: #90A955;
+  --theme-brdr: black;
+  /*Might look good reversed? Light background with dark text.*/
+}

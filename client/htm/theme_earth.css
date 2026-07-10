@@ -1,0 +1,11 @@
+:root {
+  /*The default dark-earth theme.*/
+  --theme: #0A0908;/*darkest (black)*/
+  --theme-bgc: #0A0908;/*black background color*/
+  --theme-bgc1: #22333B;/*next darkest (dark with some blue and/or grey)*/
+  --theme-bgc2: #5E503F;/*next darkest (with some brown and/or grey)*/
+  --theme-c: #EAE0D5;/*the lightest (an off-white)*/
+  --theme-c1: #C6AC8F;/*the next lightest, (light-brown)*/
+  --theme-c2: #C1C43B;/*earthy green*/
+  --theme-brdr: #C6AC8F;/*tan border color*/
+}
