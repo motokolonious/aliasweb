@@ -112,22 +112,13 @@
       <br />
       <p>&#169;copyright! jk not really&#169;</p>
     </footer>
-    <script type="text/javascript">
+    <script type="module">
+      import { assignNewLocation } from "./Modules/url.mjs";
       const dialogId = "getaccess__dialog--h63o1jiuhz";
       const dialog = document.getElementById(dialogId);
       dialog.addEventListener("click", e => {//Auth article back button event handler.
         if (e.target instanceof Element && e.target.tagName === "svg" && e.target.closest(".autharticleheader") !== null) showGetAccessDialog();
       });
-      function getUrlRoot() {
-        const lastfsIndex = document.URL.lastIndexOf('/');
-        return document.URL.substring(0, lastfsIndex + 1);
-      }
-      function assignNewLocation(resourcePath) {
-        if (typeof resourcePath !== "string") return;
-        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
-        const newUrl = getUrlRoot() + resourcePath;
-        document.location.assign(newUrl);
-      }
       async function validateTokenAsync(inputId, file) {
         const input = document.getElementById(inputId);
         if (input === null) return false;

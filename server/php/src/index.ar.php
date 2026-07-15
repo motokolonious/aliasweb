@@ -68,17 +68,8 @@
       <br />
       <p>&#169;قانون&#169;</p>
     </footer>
-    <script type="text/javascript">
-      function getUrlRoot() {
-        const lastfsIndex = document.URL.lastIndexOf('/');
-        return document.URL.substring(0, lastfsIndex + 1);
-      }
-      function assignNewLocation(resourcePath) {
-        if (typeof resourcePath !== "string") return;
-        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
-        const newUrl = getUrlRoot() + resourcePath;
-        document.location.assign(newUrl);
-      }
+    <script type="module">
+      import { assignNewLocation } from "./Modules/url.mjs";
       const langselid = "header__langselect";
       const langsel = document.getElementById(langselid);
       langsel.addEventListener("change", e => {

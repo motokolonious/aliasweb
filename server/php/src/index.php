@@ -69,43 +69,9 @@
       <br />
       <p>&#169;copyright! jk not really&#169;</p>
     </footer>
-    <script type="text/javascript">
-      function getUrlRoot() {
-        const lastfsIndex = document.URL.lastIndexOf('/');
-        return document.URL.substring(0, lastfsIndex + 1);
-      }
-      function assignNewLocation(resourcePath) {
-        if (typeof resourcePath !== "string") return;
-        if (!resourcePath.endsWith("php") && !resourcePath.endsWith("htm")) return;
-        const newUrl = getUrlRoot() + resourcePath;
-        document.location.assign(newUrl);
-      }
-      function removeElementById(id) {
-        const el = document.getElementById(id);
-        if (el) el.remove();
-      }
-      function removeThemeLinks() {
-        removeElementById("theme_earth");
-        removeElementById("theme_moon");
-        removeElementById("theme_forest");
-      }
-      function setThemeLink(themeName) {
-        removeThemeLinks();
-        const themeLink = document.createElement("link");
-        themeLink.setAttribute("rel", "stylesheet");
-        themeLink.setAttribute("type", "text/css");
-        if (themeName && themeName.toLowerCase() === "earth") {
-          themeLink.setAttribute("href", "theme_earth.css");
-          themeLink.setAttribute("id", "theme_earth");
-        } else if (themeName && themeName.toLowerCase() === "moon") {
-          themeLink.setAttribute("href", "theme_moon.css");
-          themeLink.setAttribute("id", "theme_moon");
-        } else if (themeName && themeName.toLowerCase() === "forest") {
-          themeLink.setAttribute("href", "theme_forest.css");
-          themeLink.setAttribute("id", "theme_forest");
-        }
-        document.head.appendChild(themeLink);
-      }
+    <script type="module">
+      import { assignNewLocation } from "./Modules/url.mjs";
+      import { setThemeLink } from "./Modules/theme.mjs";
       const langselid = "header__langselect";
       const langsel = document.getElementById(langselid);
       langsel.addEventListener("change", e => {
