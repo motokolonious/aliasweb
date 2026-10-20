@@ -46,7 +46,7 @@
         <h1>Hi. I'm <span class="alias"><?php include 'get_session_alias.php';?>.<span class="aliasinfo">An alias. You'll need to earn a business badge to see my real name.</span></span></h1>
       </div>
       <br />
-      <p>I'm a programmer who wants to keep his skills up, collaborate with peers, and provide employers with vital information. Please peruse the site at your leisure!</p>
+      <p>I'm a health advocate and programmer who wants to keep his skills up, collaborate with peers, and provide employers with vital information. Please peruse the site at your leisure!</p>
       <p>I have a lot of unfinished projects and interests. Please help! See the list below to find out more.</p>
       <br />
       <h3>Top Interests</h3>

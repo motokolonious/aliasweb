@@ -46,7 +46,7 @@
         <h1 dir="rtl">اهلا، أنا <span class="alias"><?php $lang = 'ar'; include 'get_session_alias.php'; ?><span class="aliasinfo">اسم مستعار</span></span></h1>
       </div>
       <br />
-      <p>!أنا مبرمج وعربيي سيء، مساعدني</p>
+      <p>!أنا مدافع الصحة ومبرمج وعربيي سيء، مساعدني</p>
       <br />
       <h3>اهتمامات عظيمة</h3>
       <ul>
