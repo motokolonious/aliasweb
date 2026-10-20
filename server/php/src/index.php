@@ -26,9 +26,9 @@
       <div class="header__langsel">
         <label for="header__langselect">Lang:</label>
         <select id="header__langselect">
-          <option>English</option>
-          <option>Arabic</option>
-          <option value="Arabic">عربي</option>
+          <option value="english">English</option>
+          <option value="arabic">Arabic</option>
+          <option value="arabic">عربي</option>
         </select>
       </div>
       <div class="header__themesel">
@@ -71,28 +71,15 @@
     </footer>
     <script type="module">
       import { assignNewLocation } from "./Modules/url.mjs";
-      import { setThemeLink } from "./Modules/theme.mjs";
+      import { initTheme } from "./Modules/theme.mjs";
       const langselid = "header__langselect";
       const langsel = document.getElementById(langselid);
       langsel.addEventListener("change", e => {
-        if (e.target.value === "Arabic") {
+        if (e.target.value === "arabic") {
           assignNewLocation("index.ar.php");
         }
       });
-      const themeselid = "header__themeselect";
-      const themesel = document.getElementById(themeselid);
-      themesel.addEventListener("change", e => {
-        if (e.target.value === "earth") {
-          window.sessionStorage.setItem("aliasweb_theme", "earth");
-          setThemeLink("earth");
-        } else if (e.target.value === "moon") {
-          window.sessionStorage.setItem("aliasweb_theme", "moon");
-          setThemeLink("moon");
-        } else if (e.target.value === "forest") {
-          window.sessionStorage.setItem("aliasweb_theme", "forest");
-          setThemeLink("forest");
-        }
-      });
+      initTheme();
     </script>
   </body>
 </html>
