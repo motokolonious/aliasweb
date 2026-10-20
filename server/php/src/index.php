@@ -34,9 +34,9 @@
       <div class="header__themesel">
         <label for="header__themeselect">Theme:</label>
         <select id="header__themeselect">
-          <option>Earth</option>
-          <option>Moon</option>
-          <option>Forest</option>
+          <option value="earth">Earth</option>
+          <option value="moon">Moon</option>
+          <option value="forest">Forest</option>
         </select>
       </div>
       <a class="header__srcodeanchor" href="https://github.com/motokolonious/aliasweb">Site Source Code</a>
@@ -82,13 +82,13 @@
       const themeselid = "header__themeselect";
       const themesel = document.getElementById(themeselid);
       themesel.addEventListener("change", e => {
-        if (e.target.value === "Earth" || e.target.value === "earth") {
+        if (e.target.value === "earth") {
           window.sessionStorage.setItem("aliasweb_theme", "earth");
           setThemeLink("earth");
-        } else if (e.target.value === "Moon" || e.target.value === "moon") {
+        } else if (e.target.value === "moon") {
           window.sessionStorage.setItem("aliasweb_theme", "moon");
           setThemeLink("moon");
-        } else if (e.target.value === "Forest" || e.target.value === "forest") {
+        } else if (e.target.value === "forest") {
           window.sessionStorage.setItem("aliasweb_theme", "forest");
           setThemeLink("forest");
         }

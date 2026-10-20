@@ -33,9 +33,9 @@
       </div>
       <div class="header__themesel">
         <select id="header__themeselect">
-          <option>الأرض</option>
-          <option>القمر</option>
-          <option>الغابة</option>
+          <option value="earth">الأرض</option>
+          <option value="moon">القمر</option>
+          <option value="forest">الغابة</option>
         </select>
         <label for="header__themeselect">:ألوان</label>
       </div>
@@ -70,11 +70,26 @@
     </footer>
     <script type="module">
       import { assignNewLocation } from "./Modules/url.mjs";
+      import { setThemeLink } from "./Modules/theme.mjs";
       const langselid = "header__langselect";
       const langsel = document.getElementById(langselid);
       langsel.addEventListener("change", e => {
         if (e.target.value === "English") {
           assignNewLocation("index.php");
+        }
+      });
+      const themeselid = "header__themeselect";
+      const themesel = document.getElementById(themeselid);
+      themesel.addEventListener("change", e => {
+        if (e.target.value === "earth") {
+          window.sessionStorage.setItem("aliasweb_theme", "earth");
+          setThemeLink("earth");
+        } else if (e.target.value === "moon") {
+          window.sessionStorage.setItem("aliasweb_theme", "moon");
+          setThemeLink("moon");
+        } else if (e.target.value === "forest") {
+          window.sessionStorage.setItem("aliasweb_theme", "forest");
+          setThemeLink("forest");
         }
       });
     </script>
